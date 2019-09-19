@@ -1,0 +1,8 @@
+appname: 'Just Booked'
+meta:
+  description: "Office catering made easy. Just Booked is a food delivery catering service that provides healthy office snacks, sandwich platters and event catering from restaurants that cater."
+page_title:
+  default: "Event catering made simple. Order delicious food from your favourite chefs & caterers for business."
+  index: "Justbooked.com - Order meals from nearby chefs, and have them delivered fresh."
+  search_page: "Justbooked.com - Order meals from nearby chefs, and have them delivered fresh."
+  blog: 'BLOG - read about venues and events'

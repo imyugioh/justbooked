@@ -1,0 +1,199 @@
+.red-amount {
+  color: red;
+  margin-right: 8px;
+}
+.order-item {
+  padding: 0 00px;
+  .menu-title {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 0px;
+    font-size: 1.2em;
+    h6 {
+      font-size: 1.2em;
+    }
+  }
+
+  .order-card-border {
+    width: 100%;
+  }
+
+  .other-info {
+    width: 100%;
+    h6 {
+      font-size: .9375rem;
+    }
+  }
+
+  .product-separator {
+    font-size: .9375rem;
+  }
+}
+
+/* loading spinner */
+.sk-folding-cube {
+  margin: 20px auto;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
+}
+
+.sk-folding-cube .sk-cube {
+  float: left;
+  width: 50%;
+  height: 50%;
+  position: relative;
+  -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+          transform: scale(1.1); 
+}
+.sk-folding-cube .sk-cube:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
+          animation: sk-foldCubeAngle 2.4s infinite linear both;
+  -webkit-transform-origin: 100% 100%;
+      -ms-transform-origin: 100% 100%;
+          transform-origin: 100% 100%;
+}
+.sk-folding-cube .sk-cube2 {
+  -webkit-transform: scale(1.1) rotateZ(90deg);
+          transform: scale(1.1) rotateZ(90deg);
+}
+.sk-folding-cube .sk-cube3 {
+  -webkit-transform: scale(1.1) rotateZ(180deg);
+          transform: scale(1.1) rotateZ(180deg);
+}
+.sk-folding-cube .sk-cube4 {
+  -webkit-transform: scale(1.1) rotateZ(270deg);
+          transform: scale(1.1) rotateZ(270deg);
+}
+.sk-folding-cube .sk-cube2:before {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+.sk-folding-cube .sk-cube3:before {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s; 
+}
+.sk-folding-cube .sk-cube4:before {
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+@-webkit-keyframes sk-foldCubeAngle {
+  0%, 10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+            transform: perspective(140px) rotateX(-180deg);
+    opacity: 0; 
+  } 25%, 75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+            transform: perspective(140px) rotateX(0deg);
+    opacity: 1; 
+  } 90%, 100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+            transform: perspective(140px) rotateY(180deg);
+    opacity: 0; 
+  } 
+}
+
+@keyframes sk-foldCubeAngle {
+  0%, 10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+            transform: perspective(140px) rotateX(-180deg);
+    opacity: 0; 
+  } 25%, 75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+            transform: perspective(140px) rotateX(0deg);
+    opacity: 1; 
+  } 90%, 100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+            transform: perspective(140px) rotateY(180deg);
+    opacity: 0; 
+  }
+}
+/* end of loading spinner */
+
+.crystal-border {
+  position: relative;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+}
+
+.crystal-border:hover {
+  background-color: #fff;
+  box-shadow: 1px 2px 10px 0 rgba(0, 0, 0, .2)
+}
+
+@media (max-width: 767px) {
+  .phone-item .restaurant figure{
+      flex-direction: column !important;
+  }
+  .phone-item .restaurant figure .restaurant-thumb {
+      max-width: 767px;
+      width: 100%;
+      margin: 0;
+      flex-basis: 130px;
+      margin-right: 0;
+      margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 415px){
+  .breadcrumb{
+    display: none;
+  }
+  #mapview-mobile{
+    display: none;
+  }
+  .hero-form__input-wrapper .hero-form__input--food{
+    background-image: none;
+      background-size: 0;
+      padding: 12px 7px;
+  }
+  .hero-form__input-wrapper .hero-form__input--location{
+    background-image: none;
+      background-size: 0;
+      padding: 12px 7px;
+  }
+  .phone-item .restaurant-price{
+    display: none;
+  }
+
+  .hero-form{
+    display: block;
+  }
+
+  .hero-form .hero-form__input-wrapper{
+    width: 48%;
+    float: left;
+    padding-bottom: 15px;
+  }
+
+  .hero-form .hero-form__input-wrapper:nth-of-type(1) {
+    margin-right: 4%;
+  }
+
+  .search-box-homepage .hero-form__input-wrapper {
+    width: 100% !important;
+  }
+
+  .location {
+      margin-top: 10px;
+  }
+  .location input.form-control{
+    font-size: 0.9em;
+  }
+  .filters{
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+  }
+}

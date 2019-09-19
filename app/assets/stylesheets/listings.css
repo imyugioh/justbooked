@@ -1,0 +1,133 @@
+.menus-view {
+  display: none;
+  transition: all 0.5s ease-in-out;
+}
+
+.menus-view.show {
+  display: block;
+}
+
+.chefs-view {
+  display: none;
+  transition: all 0.5s ease-in-out;
+}
+
+.chefs-view.show {
+  display: block;
+}
+
+.filters-views {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 768px){
+  .filters-views {
+    display: none;
+  }
+}
+
+.view-switch {
+  align-items: center;
+}
+.view-switch a{
+  color: #343434;
+  font-weight: bold;
+  transition: .3s;
+  padding: .25em 0;
+}
+.view-switch a.active{
+  color: #f21400;
+  text-decoration: none;
+  box-shadow: 0 2px 0 #f21400;
+}
+.restaurant-link {
+  text-decoration: none!important;
+  transition: .4s;
+}
+.restaurant-link .card-text-description p {
+  color: #838383;
+}
+.restaurant-link p {
+  color: #343434;
+}
+
+@media (min-width: 768px) {
+  .restaurant-view {
+    background: white !important;
+  }
+}
+
+.restaurant-view img:not(.img-mobile) {
+  height: auto !important;
+  width: 135px !important;
+  object-fit: unset !important;
+}
+.detail-card.restaurant-view .media-start {
+  width: auto!important;
+  height: auto!important;
+}
+
+.restaurant-view .hidden-md-down {
+  text-align: center;
+  width: 30%;
+}
+
+.restaurant-view .hidden-md-down.flex-wid-40 {
+  width: 40%;
+}
+
+.detail-card.restaurant-view .media-body{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 30px;
+}
+.bold {
+  font-weight: bold;
+}
+.detail-card.restaurant-view .media {
+  align-items: center;
+} 
+
+
+.detail-card.restaurant-view{
+  margin-top: 0px;
+  margin-bottom: 15px;
+}
+.detail-card.restaurant-view .border {
+  height: 60px;
+  width: 1px;
+  background-color: #f21400;
+}
+
+.detail-card.restaurant-view .border-right {
+  position: relative;
+}
+
+
+.detail-card.restaurant-view .media-start{}
+
+@media only screen and (max-width: 480px) {
+  .detail-card.restaurant-view img {
+    width: 85px;
+    height: 85px;
+    object-fit: cover!important;
+  }
+
+  .detail-card {
+    padding-top:0px;
+    padding-bottom: 15px; 
+  }
+
+  .card-text-description p {
+    margin-bottom: 0px!important;
+  }
+
+  .detail-card.restaurant-view .media-body{
+    padding-right: 0px;
+  }
+}

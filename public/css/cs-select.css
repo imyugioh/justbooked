@@ -1,0 +1,100 @@
+/*
+ * Custom Select
+ */
+@import 'chosen.min.css';
+.cs-select {
+    width: 100%;
+}
+.cs-select.chosen-container {
+    text-align: left;
+    outline: none;
+}
+.cs-select.chosen-container .chosen-single {
+    text-align: center;
+    outline: none;
+    border: 1px solid #e4b248;
+    border-radius: 0;
+    padding: 10px;
+    height: auto;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+select.cs-select {
+    border: 1px solid #e4b248;
+    border-radius: 0;
+    padding: 10px;
+    height: auto;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.cs-select.chosen-container-active .chosen-single {
+    border: 1px solid #e4b248;
+    box-shadow: none;
+}
+.cs-select.chosen-container-single .chosen-single {
+    background: #fff;
+    box-shadow: none;
+}
+.cs-select.chosen-container-single .chosen-single span {
+    margin-right: 0;
+}
+.cs-select.chosen-container-single .chosen-single div b {
+    background: none;
+    font: normal normal normal 14px/1 FontAwesome;
+    position: relative;
+    padding: 14px;
+    right: 20px;
+}
+.cs-select.chosen-container-single .chosen-single div b::after {
+    content: "\f0d7";
+}
+.cs-select.chosen-container-active.chosen-with-drop .chosen-single div b::after {
+    content: "\f0d8";
+}
+.cs-select.chosen-container .chosen-drop {
+    border: 1px solid #e4b248;
+}
+.cs-select.chosen-container-single .chosen-drop {
+    border-radius: 0;
+    background: url('../images/white-pixel-90.png') top left repeat;
+}
+.cs-select.chosen-container .chosen-results li {
+    color: #333;
+    font-size: 14px;
+    padding: 10px;
+}
+.cs-select.chosen-container .chosen-results li.active-result.highlighted {
+    background: #e4b248;
+    color: #fff;
+}
+.cs-select.chosen-container-single .chosen-search input[type=text] {
+    border-color: #e4b248;
+    position: relative;
+}
+
+/* .cs-select .simple state */
+.cs-select.simple.chosen-container .chosen-single {
+    text-align: left;
+    border-radius: 3px;
+    padding: 4px 10px;
+    font-size: 12px;
+    color: #666;
+}
+.cs-select.simple.chosen-container-single .chosen-single div b {
+    padding: 9px;
+    right: 10px;
+    font-size: 12px;
+}
+.cs-select.simple.chosen-container-single .chosen-single div b::after {
+    content: "\f107";
+}
+.cs-select.simple.chosen-container-active.chosen-with-drop .chosen-single div b::after {
+    content: "\f106";
+}
+.cs-select.simple.chosen-container-single .chosen-drop {
+    background: #fff;
+}
+.cs-select.simple.chosen-container .chosen-results li {
+    font-size: 12px;
+    padding: 5px;
+}

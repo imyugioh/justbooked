@@ -1,0 +1,23 @@
+// Place all the styles related to the purchase controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.purchase-menu {
+  font-weight: bold;
+}
+
+.purchase-submenu {
+  font-size: .8rem;
+  p {
+    margin: 0;
+  }
+}
+
+.purchase-item-separator {
+  font-size: .8rem;
+  font-weight: bold;
+}
+
+.purchase-menu-separator {
+  margin: 8px 0;
+  border-bottom: 1px solid #d5d5d5;
+}

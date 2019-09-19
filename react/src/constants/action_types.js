@@ -1,0 +1,11 @@
+export const GET_MENU = 'GET_MENU'
+
+export const REMOVE_MENU = 'REMOVE_MENU'
+export const REMOVE_ALL = 'REMOVE_ALL'
+export const ADD_MENU = 'ADD_MENU'
+
+export const GET_CART_DATA = 'GET_CART_DATA'
+export const CART_DATA_RECEIVED = 'CART_DATA_RECEIVED'
+
+export const SUBMIT_ORDER = 'SUBMIT_ORDER'
+export const ORDER_RESULT_RECEIVED = 'ORDER_RESULT_RECEIVED'

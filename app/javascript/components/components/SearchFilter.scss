@@ -1,0 +1,48 @@
+.dropdown--price-range {
+  padding: 12px;
+  text-align: center;
+  width: 268px;
+}
+
+.price-range-container {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 8px;
+  border: solid 1px #cccccc;
+  overflow: hidden;
+  margin-top: 16px;
+}
+
+.price-range__button {
+  cursor: pointer;
+  border: none;
+  border-right: solid 1px #cccccc;
+  font-size: 14px;
+  min-width: 80px;
+  width: 33.33%;
+}
+
+.price-range__button--active {
+  background: #f21400;
+  color: white;
+}
+
+.dropdown--package-type {
+  padding: 12px;
+  min-width: 450px !important;
+  min-height: 480px !important;
+}
+
+.package-type-checkbox {
+  width: calc(50% - 20px);
+}
+
+.dropdown-title {
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.dropdown--sort-by {
+  padding: 12px;
+  min-width: 450px !important;
+}

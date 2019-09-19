@@ -1,0 +1,210 @@
+/* 
+    Created on : 06.04.2015, 23:00:36
+    Author     : housebox [housebox2011@gmail.com]
+    Description: all fonts used in template
+*/
+
+/*
+ * FontAwesome
+ */
+@import "font-awesome.min.css";
+
+/*
+ * Futura Std
+ */
+@font-face {
+    font-family: 'FuturaStd-Bold';
+    src: url('../fonts/futura-stdFuturaStd-Bold/.eot');
+    src: url('../fonts/futura-std/FuturaStd-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/futura-std/FuturaStd-Bold.woff') format('woff'), url('../fonts/futura-std/FuturaStd-Bold.ttf') format('truetype'), url('../fonts/futura-std/FuturaStd-Bold.svg#futurastd_bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FuturaStd-BoldOblique';
+    src: url('../fonts/futura-std/FuturaStd-BoldOblique.eot');
+    src: url('../fonts/futura-std/FuturaStd-BoldOblique.eot?#iefix') format('embedded-opentype'), url('../fonts/futura-std/FuturaStd-BoldOblique.woff') format('woff'), url('../fonts/futura-std/FuturaStd-BoldOblique.ttf') format('truetype'), url('../fonts/futura-std/FuturaStd-BoldOblique.svg#futurastd_boldoblique') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FuturaStd-Book';
+    src: url('../fonts/futura-std/FuturaStd-Book.eot');
+    src: url('../fonts/futura-std/FuturaStd-Book.eot?#iefix') format('embedded-opentype'), url('../fonts/futura-std/FuturaStd-Book.woff') format('woff'), url('../fonts/futura-std/FuturaStd-Book.ttf') format('truetype'), url('../fonts/futura-std/FuturaStd-Book.svg#futurastd_book') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FuturaStd-BookOblique';
+    src: url('../fonts/futura-std/FuturaStd-BookOblique.eot');
+    src: url('../fonts/futura-std/FuturaStd-BookOblique.eot?#iefix') format('embedded-opentype'), url('../fonts/futura-std/FuturaStd-BookOblique.woff') format('woff'), url('../fonts/futura-std/FuturaStd-BookOblique.ttf') format('truetype'), url('../fonts/futura-std/FuturaStd-BookOblique.svg#futurastd_bookoblique') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FuturaStd-CondExtraBoldObl';
+    src: url('../fonts/futura-std/FuturaStd-CondExtraBoldObl.eot');
+    src: url('../fonts/futura-std/FuturaStd-CondExtraBoldObl.eot?#iefix') format('embedded-opentype'), url('../fonts/futura-std/FuturaStd-CondExtraBoldObl.woff') format('woff'), url('../fonts/futura-std/FuturaStd-CondExtraBoldObl.ttf') format('truetype'), url('../fonts/futura-std/FuturaStd-CondExtraBoldObl.svg#futurastd_condextraboldobl') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FuturaStd-Condensed';
+    src: url('../fonts/futura-std/FuturaStd-Condensed.eot');
+    src: url('../fonts/futura-std/FuturaStd-Condensed.eot?#iefix') format('embedded-opentype'), url('../fonts/futura-std/FuturaStd-Condensed.woff') format('woff'), url('../fonts/futura-std/FuturaStd-Condensed.ttf') format('truetype'), url('../fonts/futura-std/FuturaStd-Condensed.svg#futurastd_condensed') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FuturaStd-CondensedBold';
+    src: url('../fonts/futura-std/FuturaStd-CondensedBold.eot');
+    src: url('../fonts/futura-std/FuturaStd-CondensedBold.eot?#iefix') format('embedded-opentype'), url('../fonts/futura-std/FuturaStd-CondensedBold.woff') format('woff'), url('../fonts/futura-std/FuturaStd-CondensedBold.ttf') format('truetype'), url('../fonts/futura-std/FuturaStd-CondensedBold.svg#futurastd_condensedbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FuturaStd-CondensedBoldObl';
+    src: url('../fonts/futura-std/FuturaStd-CondensedBoldObl.eot');
+    src: url('../fonts/futura-std/FuturaStd-CondensedBoldObl.eot?#iefix') format('embedded-opentype'), url('../fonts/futura-std/FuturaStd-CondensedBoldObl.woff') format('woff'), url('../fonts/futura-std/FuturaStd-CondensedBoldObl.ttf') format('truetype'), url('../fonts/futura-std/FuturaStd-CondensedBoldObl.svg#futurastd_condensedboldobl') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FuturaStd-CondensedExtraBd';
+    src: url('../fonts/futura-std/FuturaStd-CondensedExtraBd.eot');
+    src: url('../fonts/futura-std/FuturaStd-CondensedExtraBd.eot?#iefix') format('embedded-opentype'), url('../fonts/futura-std/FuturaStd-CondensedExtraBd.woff') format('woff'), url('../fonts/futura-std/FuturaStd-CondensedExtraBd.ttf') format('truetype'), url('../fonts/futura-std/FuturaStd-CondensedExtraBd.svg#futurastd_condensedextrabd') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FuturaStd-CondensedLight';
+    src: url('../fonts/futura-std/FuturaStd-CondensedLight.eot');
+    src: url('../fonts/futura-std/FuturaStd-CondensedLight.eot?#iefix') format('embedded-opentype'), url('../fonts/futura-std/FuturaStd-CondensedLight.woff') format('woff'), url('../fonts/futura-std/FuturaStd-CondensedLight.ttf') format('truetype'), url('../fonts/futura-std/FuturaStd-CondensedLight.svg#futurastd_condensedlight') format('svg');
+}
+
+@font-face {
+    font-family: 'FuturaStd-CondensedLightObl';
+    src: url('../fonts/futura-std/FuturaStd-CondensedLightObl.eot');
+    src: url('../fonts/futura-std/FuturaStd-CondensedLightObl.eot?#iefix') format('embedded-opentype'), url('../fonts/futura-std/FuturaStd-CondensedLightObl.woff') format('woff'), url('../fonts/futura-std/FuturaStd-CondensedLightObl.ttf') format('truetype'), url('../fonts/futura-std/FuturaStd-CondensedLightObl.svg#futurastd_condensedlightobl') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FuturaStd-CondensedOblique';
+    src: url('../fonts/futura-std/FuturaStd-CondensedOblique.eot');
+    src: url('../fonts/futura-std/FuturaStd-CondensedOblique.eot?#iefix') format('embedded-opentype'), url('../fonts/futura-std/FuturaStd-CondensedOblique.woff') format('woff'), url('../fonts/futura-std/FuturaStd-CondensedOblique.ttf') format('truetype'), url('../fonts/futura-std/FuturaStd-CondensedOblique.svg#futurastd_condensedoblique') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FuturaStd-ExtraBold';
+    src: url('../fonts/futura-std/FuturaStd-ExtraBold.eot');
+    src: url('../fonts/futura-std/FuturaStd-ExtraBold.eot?#iefix') format('embedded-opentype'), url('../fonts/futura-std/FuturaStd-ExtraBold.woff') format('woff'), url('../fonts/futura-std/FuturaStd-ExtraBold.ttf') format('truetype'), url('../fonts/futura-std/FuturaStd-ExtraBold.svg#futurastd_extrabold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FuturaStd-ExtraBoldOblique';
+    src: url('../fonts/futura-std/FuturaStd-ExtraBoldOblique.eot');
+    src: url('../fonts/futura-std/FuturaStd-ExtraBoldOblique.eot?#iefix') format('embedded-opentype'), url('../fonts/futura-std/FuturaStd-ExtraBoldOblique.woff') format('woff'), url('../fonts/futura-std/FuturaStd-ExtraBoldOblique.ttf') format('truetype'), url('../fonts/futura-std/FuturaStd-ExtraBoldOblique.svg#futurastd_extraboldoblique') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FuturaStd-Heavy';
+    src: url('../fonts/futura-std/FuturaStd-Heavy.eot');
+    src: url('../fonts/futura-std/FuturaStd-Heavy.eot?#iefix') format('embedded-opentype'), url('../fonts/futura-std/FuturaStd-Heavy.woff') format('woff'), url('../fonts/futura-std/FuturaStd-Heavy.ttf') format('truetype'), url('../fonts/futura-std/FuturaStd-Heavy.svg#futurastd_heavy') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FuturaStd-HeavyOblique';
+    src: url('../fonts/futura-std/FuturaStd-HeavyOblique.eot');
+    src: url('../fonts/futura-std/FuturaStd-HeavyOblique.eot?#iefix') format('embedded-opentype'), url('../fonts/futura-std/FuturaStd-HeavyOblique.woff') format('woff'), url('../fonts/futura-std/FuturaStd-HeavyOblique.ttf') format('truetype'), url('../fonts/futura-std/FuturaStd-HeavyOblique.svg#futurastd_heavyoblique') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FuturaStd-Light';
+    src: url('../fonts/futura-std/FuturaStd-Light.eot');
+    src: url('../fonts/futura-std/FuturaStd-Light.eot?#iefix') format('embedded-opentype'), url('../fonts/futura-std/FuturaStd-Light.woff') format('woff'), url('../fonts/futura-std/FuturaStd-Light.ttf') format('truetype'), url('../fonts/futura-std/FuturaStd-Light.svg#futurastd_light') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FuturaStd-LightOblique';
+    src: url('../fonts/futura-std/FuturaStd-LightOblique.eot');
+    src: url('../fonts/futura-std/FuturaStd-LightOblique.eot?#iefix') format('embedded-opentype'), url('../fonts/futura-std/FuturaStd-LightOblique.woff') format('woff'), url('../fonts/futura-std/FuturaStd-LightOblique.ttf') format('truetype'), url('../fonts/futura-std/FuturaStd-LightOblique.svg#futurastd_lightoblique') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FuturaStd-Medium';
+    src: url('../fonts/futura-std/FuturaStd-Medium.eot');
+    src: url('../fonts/futura-std/FuturaStd-Medium.eot?#iefix') format('embedded-opentype'), url('../fonts/futura-std/FuturaStd-Medium.woff') format('woff'), url('../fonts/futura-std/FuturaStd-Medium.ttf') format('truetype'), url('../fonts/futura-std/FuturaStd-Medium.svg#futurastd_medium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FuturaStd-MediumOblique';
+    src: url('../fonts/futura-std/FuturaStd-MediumOblique.eot');
+    src: url('../fonts/futura-std/FuturaStd-MediumOblique.eot?#iefix') format('embedded-opentype'), url('../fonts/futura-std/FuturaStd-MediumOblique.woff') format('woff'), url('../fonts/futura-std/FuturaStd-MediumOblique.ttf') format('truetype'), url('../fonts/futura-std/FuturaStd-MediumOblique.svg#futurastd_mediumoblique') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*
+ * Roboto Slab
+ */
+@font-face {
+    font-family: 'RobotoSlab-Bold';
+    src: url('../fonts/roboto-slab/RobotoSlab-Bold-webfont.eot');
+    src: url('../fonts/roboto-slab/RobotoSlab-Bold-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/roboto-slab/RobotoSlab-Bold-webfont.woff') format('woff'), url('../fonts/roboto-slab/RobotoSlab-Bold-webfont.ttf') format('truetype'), url('../fonts/roboto-slab/RobotoSlab-Bold-webfont.svg#robotoslab_bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoSlab-Light';
+    src: url('../fonts/roboto-slab/RobotoSlab-Light-webfont.eot');
+    src: url('../fonts/roboto-slab/RobotoSlab-Light-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/roboto-slab/RobotoSlab-Light-webfont.woff') format('woff'), url('../fonts/roboto-slab/RobotoSlab-Light-webfont.ttf') format('truetype'), url('../fonts/roboto-slab/RobotoSlab-Light-webfont.svg#robotoslab_light') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoSlab-Regular';
+    src: url('../fonts/roboto-slab/RobotoSlab-Regular-webfont.eot');
+    src: url('../fonts/roboto-slab/RobotoSlab-Regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/roboto-slab/RobotoSlab-Regular-webfont.woff') format('woff'), url('../fonts/roboto-slab/RobotoSlab-Regular-webfont.ttf') format('truetype'), url('../fonts/roboto-slab/RobotoSlab-Regular-webfont.svg#robotoslab_regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'RobotoSlab-Thin';
+    src: url('../fonts/roboto-slab/RobotoSlab-Thin-webfont.eot');
+    src: url('../fonts/roboto-slab/RobotoSlab-Thin-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/roboto-slab/RobotoSlab-Thin-webfont.woff') format('woff'), url('../fonts/roboto-slab/RobotoSlab-Thin-webfont.ttf') format('truetype'), url('../fonts/roboto-slab/RobotoSlab-Thin-webfont.svg#robotoslab_thin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

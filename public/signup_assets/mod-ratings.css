@@ -1,0 +1,36 @@
+.narrowIcon{float:left;position:relative;text-align:left;width:5em}
+.narrowIcon.narrowIconRight{float:right}
+.narrowIcon .fullStars{position:absolute;float:none;top:0;left:0;width:0;overflow:hidden;white-space:nowrap}
+.narrowIcon .fullStars.stars0{width:0}
+.narrowIcon .fullStars.stars5{width:.25em}
+.narrowIcon .fullStars.stars10{width:.9em}
+.narrowIcon .fullStars.stars15{width:1.25em}
+.narrowIcon .fullStars.stars20{width:1.9em}
+.narrowIcon .fullStars.stars25{width:2.25em}
+.narrowIcon .fullStars.stars30{width:2.9em}
+.narrowIcon .fullStars.stars35{width:3.25em}
+.narrowIcon .fullStars.stars40{width:3.9em}
+.narrowIcon .fullStars.stars45{width:4.25em}
+.narrowIcon .fullStars.stars50{width:100%}
+.narrowIcon i:before,.oocss .narrowIcon i:before{width:.7em;margin-right:0}
+.rating_widget,.static_rating_widget ul{margin:0;padding:0;list-style:none;overflow:hidden}
+.static_rating_widget ul{display:inline-block}
+.rating_widget li,.static_rating_widget li{display:block;float:left;margin:2px;background:url(//static.trulia-cdn.com/images/flair/ratings24.png) no-repeat}
+.rating_widget_label_small{margin-top:1px}
+.rating_star_small li{height:11px;width:11px;background-position:-79px 0;margin:2px}
+.rating_star_small li.filled,.rating_star_small li.selected{background-position:-79px -60px}
+.rating_star_small li.partial div{background:url(//static.trulia-cdn.com/images/flair/ratings24.png) -79px -60px no-repeat;height:11px}
+.rating_bar_small{border:1px solid #ccc}
+.rating_bar_small li{font-size:1px;height:8px;width:11px;margin:2px;background-image:none;background-color:#ccc;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px}
+.rating_bar_small li.filled,.rating_bar_small li.partial div{background-color:#B4CF47}
+.rating_bar_small li.selected{background-color:#F2B73A}
+.rating_bar_small li.partial div{height:8px;width:11px;border-radius:2px;-moz-border-radius:2px;-webkit-border-radius:2px}
+.rating_bar_medium{border:1px solid #ccc}
+.rating_bar_medium li{font-size:1px;background-color:#CCC;background-image:none;height:9px;margin:3px 2px;width:13px;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px}
+.rating_bar_medium li.filled{background-color:#B4CF47}
+.rating_bar_medium li.selected{background-color:#F2B73A}
+.rating_star_medium li,.rating_star_medium_green li{height:22px;width:22px}
+.rating_star_medium li.filled,.rating_star_medium li.selected{background-position:0 -30px}
+.rating_star_medium_green li{background-position:0 0}
+.rating_star_medium_green li.filled{background-position:0 -60px}
+.rating_star_medium li.partial div{background:url(//static.trulia-cdn.com/images/flair/ratings24.png) 0 -30px no-repeat;height:22px}

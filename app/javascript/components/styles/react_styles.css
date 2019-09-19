@@ -1,0 +1,123 @@
+.nodisplay {
+  display: 'none'
+}
+.btn-filter::after {
+  margin-left: 5px;
+}
+
+.dropdown-item {
+  pointer-events: none;
+}
+
+.restaurant-category {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.venu-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.marker {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  user-select: none;
+  width: 80px;
+  height: 45px;
+  border: 0px;
+  padding: 0px;
+  margin: 0px;
+  max-width: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonStyle {
+  border: none
+}
+.innerStyle {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  user-select: none;
+  width: 80px;
+  height: 45px;
+  border: 0px;
+  padding: 0px;
+  margin: 0px;
+  max-width: none;
+  cursor: pointer;
+}
+
+.mr-15 {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.mt-5px {
+  margin-top: 5px;
+}
+
+.innerText {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+}
+
+.defaultStyle {
+  transition: display 300ms ease-in-out;
+  display: none;
+  padding: 20px;
+  background-color: '#8787d8';
+  position: absolute;
+  top: -280px !important;
+}
+
+.entering {
+  display: none;
+}
+
+.entered {
+  display: inline-block;
+}
+
+.titleImage {
+  width: 240px;
+  height: 170px;
+}
+
+.highlighted {
+  box-shadow: 0 0 5px 2px #ff0000
+}
+
+.currentPosition {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  text-align: left;
+  padding: 5px 10px;
+  background-color: #EEE;
+  border: 1px solid #DDD;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.invalidInput {
+    border: 1px solid red;
+}
+
+
+.btn.active
+{
+  color: white;
+  background-color:red;
+}
