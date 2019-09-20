@@ -52,33 +52,6 @@ class AccountsController < ApplicationController
 
   end
 
-  def payment_update
-    if @payment_account = @chef.payment_account
-      puts ">>>>>>>>>>>>>>>> updating strip account"
-      @payment_account.ip_address = request.remote_ip
-      @payment_account.dob_year = @chef.dob.year
-      @payment_account.dob_month = @chef.dob.month
-      @payment_account.dob_day = @chef.dob.day
-      result = @payment_account.update_attributes(payment_info_params)
-    else
-      @payment_account = PaymentAccount.new(payment_info_params)
-      @payment_account.ip_address = request.remote_ip
-      @payment_account.dob_year = @chef.dob.year
-      @payment_account.dob_month = @chef.dob.month
-      @payment_account.dob_day = @chef.dob.day
-      @payment_account.user_id = current_user.id
-      @payment_account.chef_id = @chef.id
-      result = @payment_account.save
-    end
-
-    if result
-      redirect_to payment_settings_account_path, flash: {success: "Information was successfully updated."}    
-    else
-      render :payment_settings, flash: {error: "Please enter required information"}    
-    end
-  end
-
-
   def certification
   end
 
