@@ -20,4 +20,34 @@ class BookingsController < ApplicationController
     end
   end
 
+  def payment
+    @package = Package.friendly.find(params[:package_id])
+    @venue = @package.venue
+    booking = Booking.find_by_package_id_and_sender_id_and_token(
+      @package.id, (user_signed_in? ? current_user.id : nil), params[:booking_id])
+    fail ActiveRecord::RecordNotFound unless booking.present?
+    validate_booking(booking)
+    @booking = booking.decorate
+
+  end
+
+  private
+
+  def validate_booking(booking)
+    message = 'Sorry, no actions are allowed. Order expired!'
+    redirect_to :back, flash: { error: message } if booking.expired?
+  end
+
+  def find_booking
+    booking = Booking.find_by_token(params[:id])
+    fail ActiveRecord::RecordNotFound unless booking.present?
+    @booking = booking.decorate
+  end
+
+  def load_data
+    @venue = @booking.venue
+    @sender = @booking.sender
+    @recipient = @booking.recipient
+    @charge = @booking.charge
+  end
 end
