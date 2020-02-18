@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="">
+  <meta property="og:url" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>JustBooked</title>
+
+  
+  
+  <style type="text/css">#template-content a:link,#template-content a:visited,#template-content a.yshortcuts{color:#f21400;font-weight:normal;text-decoration:underline}#template-content h2{margin-top:30px;margin-bottom:20px}#template-content h3{margin-top:30px;margin-bottom:10px}#template-content img{display:inline;height:auto;width:100%}#template-content p{margin:0 0 15px}#template-content pre{display:block;width:90%;overflow-x:scroll;background-color:#F5F5F5;padding:15px}#template-content code{background-color:#F5F5F5}#template-content blockquote{margin:0 0 10px;border-left:5px solid #F5F5F5;padding:5px 10px;font-style:italic}
+</style>
+</head>
+<body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background-color: #f1eff1; height: 100% !important; margin: 0; padding: 0; width: 100%;">
+
+    <div itemscope="" itemtype="http://schema.org/EmailMessage">
+      <div itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="JustBooked">
+        <link itemprop="url" content="justbooked.com">
+      </div>
+      <div itemprop="about" itemscope="" itemtype="http://schema.org/Offer"></div>
+    </div>
+
+<center id="body-container" class="notification" style="margin: 40px auto; max-width: 600px; width: 100%;">
+
+  <!-- START TEMPLATE CONTENT //////////////// -->
+  <center id="template-content" style="background-color: #fff; box-shadow: 1px 2px 15px 0px rgba(0, 0, 0, 0.1);">
+    <!-- EMAIL PREHEADER //////////////// -->
+    <table border="0" cellpadding="0" cellspacing="0" id="template-content-preheader" width="100%" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-collapse: collapse !important; mso-table-lspace: 0pt; mso-table-rspace: 0pt; position: relative;">
+      <tr>
+        <td mc:edit="email_preheader_content01" valign="middle" align="left" width="50%" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background-color: #fff; color: #4c5460; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, 'Arial', sans-serif; font-size: 13px; line-height: 170%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 19px 40px 16px;">
+          <a href="//justbooked.com" class="email-link" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #f21400; display: inline-block; text-decoration: none; vertical-align: middle;">
+            <img src="http://i.imgur.com/ac2V2OI.png" width="147" height="25" alt="JustBooked" border="0" mc:edit="email-brand" class="email-brand" style="-ms-interpolation-mode: bicubic; border: 0; height: 25px; line-height: 100%; max-width: 100%; object-fit: contain; outline: none; text-decoration: none; width: 147px;">
+          </a>
+        </td>
+        <td mc:edit="email_preheader_content02" valign="middle" align="right" width="50%" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background-color: #fff; color: #4c5460; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, 'Arial', sans-serif; font-size: 13px; line-height: 170%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 19px 40px 16px;">
+            <span><%=Time.zone.now.strftime("%d %b %Y")%></span>
+        </td>
+      </tr>
+    </table>
+
+
+    <!-- EMAIL HEADER -->
+    <table border="0" cellpadding="0" cellspacing="0" id="template-content-header" height="200" width="100%" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-collapse: collapse !important; mso-table-lspace: 0pt; mso-table-rspace: 0pt; position: relative; text-align: center;">
+      <tr>
+        <td align="center" valign="center" bgcolor="#524050" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background-color: #524050; color: #fff; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, 'Arial', sans-serif; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 40px 15px;">
+            <!--[if gte mso 9]>
+            <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="mso-width-percent:1000;height:200px;">
+              <v:fill type="tile" color="#524050" />
+              <v:textbox inset="0,0,0,0">
+            <![endif]-->
+
+            <h1 mc:edit="email_title" class="email-title" style="color: #fff; font-family: 'Rubik', 'Helvetica Neue', Helvetica, 'Arial', sans-serif; font-size: 34px; font-weight: 500; line-height: 115%; margin: 0; text-decoration: none;">
+            
+<%= @purchase.first_name %>, did <%= @chef.first_name %> meet your <br> expectations? Leave a review.
+
+            </h1>
+            <p style="color: #fff; font-family: 'Rubik', 'Helvetica Neue', Helvetica, 'Arial', sans-serif; font-size: 20px; font-weight: 500; line-height: 115%; margin-top: 20px; text-decoration: none;">Questions? support@justbooked.com</p>
+
+            <!--[if gte mso 9]>
+            </v:textbox>
+            </v:rect>
+            <![endif]-->
+        </td>
+      </tr>
+    </table>
+
+    <!-- EMAIL CONTENT -->
+    <div mc:edit="body" id="template-content-content" style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, 'Arial', sans-serif; font-size: 15px; font-weight: 400; line-height: 150%; margin: 40px 0; max-width: 520px; text-align: left; width: 90%;">
+      
+      <h3 style="color: #343434; font-family: 'Rubik', 'Helvetica Neue', Helvetica, 'Arial', sans-serif; font-size: 18px; font-weight: 500; line-height: 140%; margin-bottom: 30px; font-weight: 600;">How did this menu item meet your expectations?</h3>
+
+      <% @menus.each do |item| %>
+        <div style="display: inline-block;">
+          <% item.assets.each do |asset| %>
+            <img src = "<%= asset.image.url(:original) %>" alt="" style="width: 35%; float: left; margin-right: 30px; margin-bottom: 60px" />
+          <% end %>
+          <div>
+            <p style="margin-bottom: 30px;"><%=item.name%><br/>
+              Start by rating it
+            </p>
+
+            <a href=<%="http://justbooked.com/reviews/"+ @purchase.token%> >
+              <div style="width: 100%; margin-bottom: 30px;"><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#808080"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#808080" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#808080" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#808080" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#808080" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg></div>
+            </a>
+            <a href=<%="http://justbooked.com/reviews/"+ @purchase.token%> > Click here to leave review.</a>
+          </div>
+          <p>Your reviews will post publicly<br/>
+              as <%= @purchase.first_name %>.
+          </p>
+        </div>
+      <% end %>
+
+    </div>
+
+    <!-- EMAIL FOOTER -->
+    <table border="0" cellpadding="0" cellspacing="0" id="template-content-footer" width="100%" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-collapse: collapse !important; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+      <tr style="background-color: #f8f6f8;">
+        <td align="center" valign="top" mc:edit="email_footer" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-top: 1px solid #d6d4d6; color: #a3a3ac; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, 'Arial', sans-serif; font-size: 12px; font-weight: 400; line-height: 125%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 40px;">
+          <div class="social" style="margin-bottom: 20px;">
+            <a href="https://www.facebook.com/justbooked" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #f21400; text-decoration: none;"><img src="http://i.imgur.com/ynDa9td.png" alt="Facebook" style="-ms-interpolation-mode: bicubic; border: 0; display: inline-block; height: auto; line-height: 100%; margin: 0 10px; max-width: 100%; object-fit: contain; outline: none; text-decoration: none; width: auto;"></a>
+            <a href="https://twitter.com/justbooked_yyz" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #f21400; text-decoration: none;"><img src="http://i.imgur.com/vkgaXmS.png" alt="Twitter" style="-ms-interpolation-mode: bicubic; border: 0; display: inline-block; height: auto; line-height: 100%; margin: 0 10px; max-width: 100%; object-fit: contain; outline: none; text-decoration: none; width: auto;"></a>
+            <a href="https://www.instagram.com/justbookedca/" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #f21400; text-decoration: none;"><img src="http://i.imgur.com/3yqKuyC.png" alt="Instagram" style="-ms-interpolation-mode: bicubic; border: 0; display: inline-block; height: auto; line-height: 100%; margin: 0 10px; max-width: 100%; object-fit: contain; outline: none; text-decoration: none; width: auto;"></a>
+            <a href="https://www.pinterest.ca/justbookedca/" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #f21400; text-decoration: none;"><img src="http://i.imgur.com/9Zj3uhq.png" alt="Pinterest" style="-ms-interpolation-mode: bicubic; border: 0; display: inline-block; height: auto; line-height: 100%; margin: 0 10px; max-width: 100%; object-fit: contain; outline: none; text-decoration: none; width: auto;"></a>
+          </div>
+          <span>© 2017 JUSTBOOKED. ALL RIGHTS RESERVED.</span>
+        </td>
+      </tr>
+    </table>
+
+  </center>
+  <!-- END TEMPLATE CONTENT //////////////// -->
+
+  <!-- TEMPLATE FOOTER //////////////// -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" id="template-footer" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-collapse: collapse !important; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+    <tr>
+      <td align="center" valign="top" style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #b2b0b2; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, 'Arial', sans-serif; font-size: 10.5px; line-height: 150%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 20px 30px; text-align: center;">
+        <p style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; display: block; margin-bottom: 15px; margin-top: 0;">All rights reserved. No part of this publication may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the publisher, except in the case of brief quotations embodied in critical reviews and certain other noncommercial uses permitted by copyright law.</p>
+      </td>
+    </tr>
+  </table>
+
+</center>
+</body>
+</html>

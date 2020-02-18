@@ -1,0 +1,22 @@
+<%= csrf_meta_tag %>
+
+<div id="content">
+  <%= form_for @asset, html: {multipart: true, class: 'dropzone', id: "my-dropzone"}, url: api_assets_path do |f| %>
+    <%= hidden_field_tag "asset[token]", @token %>
+    <%= hidden_field_tag "asset[assetable_type]", "MenuItem" %>
+
+    <div class="dz-message needsclick">
+      <h3>Drop file here</h3> or <strong>click</strong> to upload file(s)
+    </div>
+
+    <div class="fallback">
+      <%= f.file_field :image %>
+      <%= f.submit "upload the Image" %>
+    </div>
+  <% end %>
+</div>
+
+<%= stylesheet_link_tag 'application', media: 'all' %>
+<%= javascript_include_tag 'application' %>
+
+

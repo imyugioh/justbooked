@@ -1,0 +1,28 @@
+<div class="modal modal-with-image modal--signin" id="signinModal" tabindex="-1" role="dialog" aria-labelledby="signinModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header justify-content-end">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      </div>
+      <div class="modal-body justify-content-center text-center">
+        <h4>Welcome Back</h4>
+        <p class="text-secondary">Sign in to your Just Booked account</p>
+        <div class="row signinErrors"></div>
+        <%= form_for(:user, url: user_session_path, html: {remote: true}) do |f| %>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token, id: 'signin_token' %>
+          <%= hidden_field_tag :redirect_url, nil %>
+          <%= f.email_field :email, class: 'form-control mb-2', placeholder: 'Email' %>
+          <%= f.password_field :password, class: 'form-control mb-2', placeholder: 'Enter Password' %>
+          <div class="my-2">
+            <%= link_to 'Forgot password?', new_user_password_path, class: 'd-block text-right link-small text-semibold' %>
+          </div>
+          <%= f.submit 'Sign In', class: 'btn btn-primary mb-2 btn-block text-semibold' %>
+          <p class="text-secondary">Dont have an account? <a href="#" id="signupModalLink" class="text-semibold" data-toggle="modal" data-target="#signupModal">Join Now</a></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

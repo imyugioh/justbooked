@@ -1,0 +1,8 @@
+var error = "<div class='col-md-12 col-md-12'><p>Wrong Email or Password</p></div>"
+
+<% if resource.present? %>
+  window.location.href = '<%= @redirect_location %>';
+<% else %>
+   $('.signinErrors').empty()
+  $(document).find('.signinErrors').prepend(error);
+<% end %>

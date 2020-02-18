@@ -1,0 +1,22 @@
+<div class="header">
+  New reply to a request you have <%= @action %>!
+</div>
+<div class="content">
+ <p>Dear <%= @user.full_name %>,</p>
+
+  <p>
+  You have a new reply to a request you've <%=  @action %> for
+  <span class="orange_bold">
+    <%= link_to @request.venue.name, venue_url(@request.venue), target: :blank %>
+  </span>
+  venue. Click on the link below to reply to the <%= @action == 'sent' ? 'owner' : 'sender' %>:
+  </p>
+
+  <div class="custom_link"><%= link_to 'Click here to reply', request_url(@request) %></div>
+
+  <p>
+  Best,<br>
+  The Just Booked Team <br>
+  <%= ENV['APPNAME'].upcase %> | www.<%= ENV['APP_SHORT_NAME'] %>.com
+  </p>
+</div>

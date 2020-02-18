@@ -1,0 +1,18 @@
+<% content_for :header do %>
+Your order is in queue.
+<% end %>
+
+<% content_for :message do %>
+
+<p>Hi <%= @user.first_name %>,</p>
+
+<p>
+  Your order has been delivered to <%= @chef.name %><br/>
+  You will receive a response soon! 
+</p>
+
+<p>Best,<br/>
+The Justbooked Team
+<!-- <a href="http://www.justbooked.com">www.justbooked.com</a><br/> -->
+</p>
+<% end %>

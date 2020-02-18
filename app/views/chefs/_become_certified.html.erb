@@ -1,0 +1,12 @@
+<% if current_user && current_user.require_chef_certification? && cookies[:require_chef_certification] != 'DONE' %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <div class="alert-conten">
+      <p>Become a certified Just Booked chef.</p> <a href="<%= certification_account_path %>" class="btn btn-outline-primary">GET CERTIFIED</a>
+    </div>
+    
+
+    <button type="button" id="require_chef_certification_close" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+<% end %>

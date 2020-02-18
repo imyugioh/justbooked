@@ -1,0 +1,13 @@
+<% if resource.valid? %>
+  // location.replace('<%= root_url %>');
+  $('.modal-body').html('<h5>' +
+    'You have to confirm your account before continuing.<br>' +
+    'Please check your email to activate your account.</h5>');
+<% else %>
+  $('#error_messages').remove();
+  $(document).find(".signupErrors").prepend("<%= j(render 'shared/error_messages', object: resource) %>");
+<% end %>
+$('#join-now').on('hidden.bs.modal', function () {
+    $('#signup_form')[0].reset();
+    $('.signupErrors').empty()
+})

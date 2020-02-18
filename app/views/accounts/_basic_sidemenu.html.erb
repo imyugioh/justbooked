@@ -1,0 +1,9 @@
+<div class="w-20 hidden-sm-down">
+  <nav class="nav flex-column sidenav">
+  	<%= link_to "Account Settings", edit_account_path, class: current_class?(edit_account_path) %>
+    <%= link_to "Password", password_account_path, class: current_class?(password_account_path) %>
+    <%= link_to "Orders", order_index_path, class: current_class?(order_index_path)%>
+    <%= link_to "Logout", destroy_user_session_path, class: current_class?(destroy_user_session_path)%>
+  </nav>
+  
+</div>

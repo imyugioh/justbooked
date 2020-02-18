@@ -1,0 +1,75 @@
+  
+<div class="container-fluid container-orders page-content">
+  <div class="d-flex">
+    <div class="w-80">
+      <div class="d-flex flex-column flex-sm-row justify-content-sm-between mb-5">
+        <div><%= link_to "< Back to orders", order_index_path, class: "link-to-orders" %>
+          <span class="order-time"><%=@purchase.created_at.in_time_zone.strftime("%b %Y, %d at %I:%M %p")%></span>
+        </div>
+        <div class="sorting-links-wrap align-self-sm-center" id="payment-buttons">
+          <% if @purchase.request_status == 'New' %>
+            <%= button_to "Accept", purchase_charge_path(id: @purchase.id, request_status: 'Accepted'), method: :put, class: "btn btn-primary btn-order-details"%>
+            <%= button_to "Decline", purchase_charge_path(id: @purchase.id, request_status: 'Declined'), method: :put, class: "btn btn-outline-secondary btn-order-details"%>
+          <% end %>
+        </div>
+      </div>
+      <div class="order-table">
+        <div class="order-table-header">
+          <div class="order-table-title">Order Details - (Order type: <%= delivery_type(@purchase.order_type) %>)</div>
+        </div>
+
+        <div class="order-table-body">
+          <div class="row">
+            <div class="col-12 col-sm-6">
+              <div class="order-table-category">Menu item(s)</div>
+              <div class="order-table-info">
+                <% @menus.each do |item| %>
+                  <%= item.html_safe %>
+                <% end %>
+              </div>
+              <div class="order-table-category"><%= delivery_type(@purchase.order_type) %> Address</div>
+              <div class="order-table-info"><%= @purchase.get_address_from_type %></div>
+              <div class="order-table-category">Customer phone number</div>
+              <div class="order-table-info"><%= @purchase.phone_number %></div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="order-table-category"><%= delivery_type(@purchase.order_type) %> Date and Time</div>
+              <div class="order-table-info"><%= custom_date(@purchase.order_date) %> at <%= @purchase.order_time %></div>
+              <div class="order-table-category">Customer Name</div>
+              <div class="order-table-info"><%= @purchase.first_name %>&nbsp;<%= @purchase.last_name %></div>
+              <div class="order-table-category">More Details</div>
+              <div class="order-table-info pre-line"><%= @purchase.more_detail %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="order-table">
+        <div class="order-table-header">
+          <div class="order-table-title">Payment Details/Status</div>
+          <div class="order-table-status">In Progress</div>
+        </div>
+
+        <div class="order-table-body">
+          <div class="row">
+            <div class="col-12 col-sm-6">
+              <div class="order-table-category">Order Item(s):</div>
+              <div class="order-table-info">$<%= number_with_precision(@purchase.items_total/100.0, precision: 2) %></div>
+              <div class="order-table-category">HST (13%):</div>
+              <div class="order-table-info">$<%= number_with_precision(@purchase.sales_tax/100.0, precision: 2) %></div>
+              <div class="order-table-category">Order Item(s) Subtotal:</div>
+              <div class="order-table-info">$<%= number_with_precision((@purchase.items_total + @purchase.sales_tax)/100.0, precision: 2) %></div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="order-table-category">Delivery Fee:</div>
+              <div class="order-table-info">$<%= number_with_precision(@purchase.delivery_fee/100.0, precision: 2) %></div>
+              <div class="order-table-category">&nbsp;</div>
+              <div class="order-table-info">&nbsp;</div>
+              <div class="order-table-category">Order Total:</div>
+              <div class="order-table-info">$<%= number_with_precision(@purchase.total_price/100.0, precision: 2) %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

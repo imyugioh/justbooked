@@ -1,0 +1,10 @@
+<div class="recently-listed">
+  <div class="container">
+    <h2 class="text-center">Recently Added</h2>
+    <div class="row">
+      <% Menu.recently_added.each do |menu| %>
+        <%= render partial: 'shared/menu', :locals => {:menu => menu} %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.row
+  .col-md-4.col-md-offset-4
+    p.sub-title.text-center Change your password
+    = devise_error_messages!
+    = form_for(resource, as: resource_name, url: user_password_path, html: { method: :put }) do |f|
+      = f.hidden_field :reset_password_token
+      .form-group
+        = f.label :password, "New password"
+        br/
+        - if @minimum_password_length
+         em "(#{@minimum_password_length} characters minimum)"
+        br/
+        = f.password_field :password, autofocus: true, class: 'form-control'
+      .form-group
+        = f.label :password_confirmation, "Confirm new password"
+        br/
+        = f.password_field :password_confirmation, class: 'form-control'
+
+      .actions
+        = f.submit 'Change my password', class: 'btn btn-primary'
+    = render 'api/users/shared/links'

@@ -1,0 +1,42 @@
+<section class="login-page">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="wraper mt-50">
+
+          <div class="hed-login mt-50">
+            <div class="wrap-img">
+              <img src="/images/brand2.svg" alt="Just Booked" class="img-responsive">
+            </div>
+            <h5 class="hed-login-text text-center mt-25">Start using Just Booked</h5>
+          </div>
+          <div class="content-login">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= devise_error_messages! %>
+              <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: "Enter your email" %>
+              <% if @minimum_password_length %>
+                <br/>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "off", class: 'form-control mb-24', placeholder: "Enter password" %>
+              <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control mb-24', placeholder: "Confirm password" %>
+              <%= f.text_field :first_name, class: 'form-control mb-24', placeholder: "Enter first your name" %>
+              <%= f.text_field :last_name, class: 'form-control mb-24', placeholder: "Enter last your name" %>
+              <%= f.submit "Sign up", class: 'btn btn-primary mb-24 btn-block' %>
+              
+              <div class="row">
+                <div class="col-6 forgot-password text-left">
+                  <%= link_to "Forgot your password?", new_password_path(resource_name), class: "text-semibold" %>
+                </div>
+                <div class="col-6 sign-up text-right">
+                  <%= link_to "Sign in", new_session_path(resource_name), class: "text-semibold" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

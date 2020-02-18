@@ -1,0 +1,9 @@
+var $popoverContent = $('.reviews-container');
+
+$popoverContent.html('<%= escape_javascript(render(:partial => 'review', :locals => {:menu => @menu_item, :reviews => @reviews, :avg => @avg_rate})) %>' );
+console.log("<%= @menu_item.name %>");
+<% if @reviews.size !=0 %>
+	if (!$('.js-review-backdrop').length) {
+		$('body').append('<div class="js-review-backdrop modal-backdrop show"></div>');
+	}
+<% end %>

@@ -1,0 +1,70 @@
+<section class="contact-form section-newsletter">
+  <%= form_for @newsletter, id: 'newsletter_form' do |form| %>
+    <div class="container-fluid container-detail">
+      <div class="row mt-20 text-center">
+        <div class="col-md-12">
+          <p class="lead">Want vouchers and the latest news from our chefs?</p>
+          <h5>GET OUR WEEKLY MAIL:</h5>
+        </div>
+      </div>
+      <div class="row mt-20">
+        <div class="col-md-3">
+          <div class="form-group">
+            <select name="newsletter[city]" class="form-control city">
+              <option value="GTA">All of Toronto (GTA)</option>
+              <option value="Ajax">Ajax</option>
+              <option value="Brampton">Brampton</option>
+              <option value="Burlington">Burlington</option>
+              <option value="Mississauga">Mississauga</option>
+              <option value="Newmarket">Newmarket</option>
+              <option value="Oakville">Oakville</option>
+              <option value="Pickering">Pickering</option>
+              <option value="Richmond Hill">Richmond Hill</option>
+              <option value="Vaughan">Vaughan</option>
+              <option value="Whitby">Whitby</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <div class="form-group">
+            <%= form.text_field :email, id: :newsletter_email, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <button type="submit" id="newsletter_signup_button" class="btn btn-primary w-100">SIGN UP NOW</button>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+  <% end %>
+</section>
+
+
+<%= javascript_tag do %>
+
+  $(function() {
+    $("#new_newsletter").on("submit", function(event) {
+        event.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "/newsletters",
+            dataType: 'json',
+            data: $(this).serialize(),
+            success: function(result) {
+                $('#newsletter_email').val('');
+                $("#newsletter_signup_button").notify("Thank you for signing up our newsletter", "success");
+            },
+            error: function(result) {
+                $("#newsletter_signup_button").notify("something went wrong");
+            }
+        });
+    });
+  });
+
+
+<% end %>
+

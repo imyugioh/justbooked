@@ -1,0 +1,142 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+    <meta name="apple-itunes-app" content="app-id=, app-argument=">
+    <title>Just Booked</title>
+    <meta name="description" content="Want healthy, vegan or vegetarian or gluten-free/diary free meals delivered to your door, fresh and ready to eat?">
+    <link rel="stylesheet" type="text/css" href="/signup_assets/main.css">
+</head>
+
+<body>
+
+    <div id="sellerAdsApp">
+        <div>
+            <div>
+                <div>
+                    <div id="bg">
+                        <div>
+                            <img src="/signup_assets/v1.jpg" alt="Bring them home.">
+                            <div id="bg_overlay" class="overlay"></div>
+                        </div>
+                    </div>
+                    <div id="green_border">
+
+                    </div>
+                </div>
+                <div class="content contentResponsive form">
+                    <section>
+                        <div id="formView">
+                            <div>
+                                <div id="main" role="main">
+                                    <% if @show_form %>
+                                        <div class="logoContainer line txtC">
+                                            <!--  255x75-->
+                                            <div id="logo"><img class="logo_src" src="/signup_assets/justbooked_white_logo.png"  style="height:72px" alt="JustBooked">
+                                            </div>
+                                            <h1 class="ptl mtl pbm typeDeemphasize typeContrast typeReversed h1 landing_subtitle">Healthy meals, ready to order</h1>
+                                            <h3>Just Booked is launching in Ontario in November and we're happy to give ALL who opt-in a $5 off promo code at launch and a chance to Win a $500 promo code that can be used to order a variety of meals! Our chefs are waiting to prepare healthy, home-cooked meals just the way you like them. Filter through meals from near-by chefs, choose cuisine types, add a meal to your cart, checkout and it will be delivered to you.</h3>
+
+                                        </div>
+                                        <div class="line">
+                                            <div id="address_box" class="centerHorizontal cols11 form mvn pvm box boxNoBorder backgroundEmpty">
+                                                <div class="horizontal_spacing_wrapper mhl">
+                                                    <%= form_tag(promo_signup_path, :method=>'post') do %>
+                                                    <div id="address_form" class="pvs">
+                                                        <div class="line">
+                                                            <div class="col lastCol">
+                                                                <!-- PropertyInput:start -->
+
+                                                                <div class="field">
+                                                                    <span class="fieldItem text">
+                                                                        <%= text_field_tag "email", nil, class: 'searchByLocation', placeholder: "Enter your email address to receive a promo code at launch." %>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ptl">
+                                                        <span>
+                                                            <%= submit_tag "Send Me The Promo Code", class: "typeDeemphasize btn btnPrimary btnLrg btnFullWidth" %>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <% end %>
+                                            </div>
+                                        </div>
+                                    <% else %>
+                                        <div class="logoContainer line txtC">
+                                            <!--  255x75-->
+                                            <div id="logo"><img class="logo_src" src="/signup_assets/JustBooked_logo.png" alt="JustBooked">
+                                            </div>
+                                            <h2 class="ptl mtl pbm typeDeemphasize typeContrast typeReversed h1 landing_subtitle">Thank you.</h2>
+                                        </div>
+
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+
+</html>
+
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+ fbq('init', '151168282094336');
+fbq('track', 'Lead');
+</script>
+<noscript>
+ <img height="1" width="1"
+src="https://www.facebook.com/tr?id=151168282094336&ev=Lead
+&noscript=1"/>
+</noscript>
+<!-- End Facebook Pixel Code -->
+
+<!-- Google Analytics Code -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-101216155-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics Code -->
+
+
+<!-- Google Code for $500 giveaway conversion Conversion Page -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 848811934;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "oky2CPn39XUQnq_flAM";
+var google_remarketing_only = false;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/848811934/?label=oky2CPn39XUQnq_flAM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>

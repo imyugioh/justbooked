@@ -1,0 +1,90 @@
+<h4 class="setting-page-title mb-4">Account Settings</h4>
+<div class="row">
+  <div class="col-12 col-sm-12">
+    <%= render 'shared/messages', object: @chef %>
+  </div>
+</div>
+
+<%= render partial: 'chef_signup/chef_form', locals: {action: account_path} %>
+
+<div class="modal welcome-modal confirmModal" id='confirm-dialog' tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header justify-content flex-row-reverse">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body justify-content-center text-center">
+        <h4 class="selection text-center">
+          Are you really want to remove this menu category?
+        </h4>
+        <div class="confirm-btn">
+          <button type="button" class="btn btn-primary" id="confirm-btn-yes" data-dismiss="modal" aria-label="Yes">Yes</button> 
+          <button type="button" class="btn btn-primary" id="confirm-btn-no" data-dismiss="modal" aria-label="No">No</button> 
+        </div>        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal welcome-modal confirmModal" id='reject-dialog' tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header justify-content flex-row-reverse">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body justify-content-center text-center">
+        <h4 class="selection text-center">
+          You can not delete this menu category.<br/>
+          Please remove all th menus under this menu category.
+        </h4>
+        <div class="confirm-btn">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="OK">OK</button> 
+        </div>        
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  //<![CDATA[
+  $(document).ready(function() {
+      $(function(){
+          $('.working-checkbox').change(function(e){
+              $('#' + this.dataset.target).toggle();
+              toggleHiddenValue(this.dataset.hiddenTarget);
+          });
+      });
+
+      // Now let's set initial hidden fields value if schedule is off
+      $('input.working-checkbox:checkbox:checked').each(function () {
+          // set the hidden value to false
+          $('#' + this.dataset.target).hide();
+          toggleHiddenValue(this.dataset.hiddenTarget);
+      });
+  });
+  
+  function toggleHiddenValue(target_id) {
+      if ($('#' + target_id).val() === 'false') {
+          $('#' + target_id).val('true')
+      } else {
+          $('#' + target_id).val('false')
+      }
+  }
+
+  function ShowConfirmDialog(count, id) {
+    console.log(count, id)
+    if (!count && id) {
+      $('#confirm-dialog').modal({'show': true});
+    } else {
+      $('#reject-dialog').modal({'show': true});
+    }
+  }
+
+  function PreventClickEvent() {
+    return false
+  }
+  //]]>
+</script> 

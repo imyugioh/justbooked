@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= yield(:title).presence || Settings.page_title.default %></title>
+    <meta name="description" content="<%= yield(:description).presence || Settings.meta.description %>">
+    <meta name="google-site-verification" content="XPBF1_pyxUJkHkaoG6r_2csgt7ZBTL-LfBzyAVVpOWg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAj-7-7rt3UNM2nubkobnWK32KT4dR3Jkw&libraries=places"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans:400,400i,500,600,700|Rubik:400,500,700" rel="stylesheet">
+    <%= tag :meta, name: 'stripe-public-key', content: Rails.configuration.stripe[:publishable_key] %>
+    <%= csrf_meta_tags %>
+    <%= javascript_tag do %>
+      window.cart_id = <%= @cart.id %>;
+      <% if @chef %>
+        window.cart_chef_location = <%= @chef.to_chef_info.html_safe %>;
+      <% else %>
+        window.cart_chef_location = {lat: 43.6525165, lng: -79.3864094, max_delivery_distance: 10};
+      <% end %>
+
+      var flash_notice = "<%= flash[:notice] %>" || "";
+      var flash_error = "<%= flash[:error] %>" || "";
+
+      window.cookieconsent_options = {
+        "message":"This website uses cookies to ensure you get the best experience on our website",
+        "dismiss":"Got it!",
+        "learnMore":"More info",
+        "link":null,
+        "theme":"dark-top"
+      };
+    <% end %>
+    <%= stylesheet_pack_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
+  </head>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/5be0d6e79032835ef9dc658d/default';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+</script>
+<!--End of Tawk.to Script-->
+<body class="<%= body_class %>">
+    <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+  <!-- temporarly disabled certified banner -->
+  <%#= render 'chefs/become_certified' %>
+
+  <%= render 'shared/navbar' %>
+
+  <%= yield(:header) %>
+
+  <%= yield %>
+
+  <% if ['chef_signup', 'account', 'invites', 'menus', 'cart'].exclude?(controller_name) %>
+    <% if ['chefs'].exclude?(controller_name) %>
+      <%= render 'shared/testimonials' %>
+    <% end %>
+    <%= render 'shared/newsletter' %>
+    <%= render 'shared/footer' %>
+
+    <%= render 'shared/welcome_modal' %>
+    <%= render 'shared/signin_modal' %>
+    <%= render 'shared/signup_modal' %>
+
+    <% if 'chefs' == controller_name %>
+      <%= render 'shared/review' %>
+    <% end %>
+  <% end %>
+
+  <div class="modal" id="confirmationEmail" tabindex="-1" role="dialog" aria-labelledby="confirmationEmail" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="text-center">CONFIRMATION EMAIL SENT</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body justify-content-center ">
+          
+          <hr>
+          <p class="text-secondary">We've sent you a confirmation email. Please check your inbox and confirm your email address to continue.</p>
+          <hr>
+          
+          <a href="#" class="btn btn-primary mb-2 btn-block" onClick="$('#confirmationEmail').modal('hide'); return false;">OK</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="orderFromMultipleChefs" tabindex="-1" role="dialog" aria-labelledby="orderFromMultipleChefs" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="text-center">Can't order from multiple chefs</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body justify-content-center ">
+          
+          <hr>
+          <p class="text-secondary">
+            Please complete order from chef <%= @cart_chef.first_name rescue ''%> first or remove the items from the cart. Then you can order from another chef.
+          </p>
+          <hr>
+          
+          <a href="#" class="btn btn-primary mb-2 btn-block" onClick="$('#orderFromMultipleChefs').modal('hide'); return false;">OK</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<%= render 'shared/google_analytics' if Rails.env.production? %>
+<script src="//api.cloudsponge.com/widget/<%= ENV['CLOUDSPONGE_KEY'] %>.js"></script>
+<% if controller_name != 'cart' %>
+  <!-- <script src="/assets/javascripts/carts_app_build.js?t=<%= Time.zone.now.to_i %>"></script> -->
+  <%= react_component "CartsApp" %>
+<% end %>
+<% if controller_name != 'payment' %>
+  <%= javascript_include_tag "https://js.stripe.com/v3" %>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('input.timepicker').timepicker({});
+  });
+</script>
+</html>

@@ -1,0 +1,67 @@
+.header
+  - if @user.nil? || @user == @booking.sender
+    | Your order is being prepared.
+  - else
+    | Please prepare meal - payment received.
+.content
+  p Hi, #{@user.nil? ? @booking.first_name : @user.first_name}.
+  p
+    - if @user.nil? || @user == @booking.sender
+      - if @booking.total_fee <= 0.5
+        | Your order has been successfully covered using your coupon, your total is #{number_to_currency @booking.total_fee}. Your food is being prepared.
+      - else
+        | Your order has been successfully paid for in the amount of #{number_to_currency @booking.total_fee} using #{@booking.charge.last4} and your food is being prepared.
+    - else
+      - if @booking.total_fee <= 0.5
+        | The order has been paid for by #{@booking.full_name} using a coupon code. You will be reimbursed shortly.
+      - else
+        | The order has been paid for by #{@booking.full_name}.
+  h4 Order details:
+  table.booking_info cellspacing='10'
+    tbody
+      tr
+        td width='50%' Order reference number:
+        td = @booking.order_id
+      tr
+        td Customer name:
+        td = @booking.full_name
+      tr
+        td Customer phone number:
+        td = @booking.phone
+  p What was ordered:
+  table.booking_info cellspacing='10'
+    tbody
+      tr
+        td = @booking.delivery_quantity
+        td = @package.title
+  table.booking_info cellspacing='10'
+    tbody
+      tr
+        td Delivery address:
+        td = @booking.deliver_address
+      tr
+        td Delivery time:
+        td = "#{l @booking.date_start, format: :short} #{@booking.time_start}"
+      tr
+        td Delivery fee:
+        td = number_to_currency @booking.delivery_fee
+      - if @user.nil? || @user == @booking.sender
+        tr
+          td Total cost:
+          td = number_to_currency @booking.total_fee
+      - else
+        tr
+          td Total amount received:
+          td = number_to_currency @booking.remited_to_venue
+  p Note from customer:
+  p
+    - if @booking.details.nil? || @booking.details.empty?
+      | N/A
+    -else
+      | #{@booking.details}
+  hr
+  p Click #{link_to_booking "here"} to see booking details.
+  p
+    | Best,
+    br/
+    | The Just Booked Team

@@ -1,0 +1,78 @@
+<div class="header">
+  Order request for <%= @venue.name %>
+</div>
+<div class="content">
+  <p>
+    Hi, <%= @booking.first_name %>.<br>
+  </p>
+<% if @booking.accepted? %>
+  <p>
+    Your order has been accepted by Chef <%= @booking.recipient.first_name %> and your food is being prepared.<br>
+  </p>
+  <p>
+    Below are the details of your order:
+    <br>
+    <table class="booking_info" cellspacing="10">
+      <tbody>
+        <tr>
+          <td>Order reference number:</td>
+          <td><%= @booking.order_id %></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    What you ordered:
+    <br>
+    <table class="booking_info" cellspacing="10">
+      <tbody>
+        <tr>
+          <td><%= @booking.delivery_quantity %></td>
+          <td><%= @package.title %></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <table class="booking_info" cellspacing="10">
+      <tbody>
+        <tr>
+          <td>Delivery address:</td>
+          <td><%= @booking.deliver_address %></td>
+        </tr>
+        <tr>
+          <td>Delivery time:</td>
+          <td><%= l @booking.date_start, format: :short %> <%= @booking.time_start %></td>
+        </tr>
+        <tr>
+          <td>Delivery fee:</td>
+          <td><%= number_to_currency @booking.delivery_fee %></td>
+        </tr>
+        <tr>
+          <td>Total cost:</td>
+          <td><%= number_to_currency @booking.total_fee %></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    Note from customer:
+    <br>
+    <%= (@booking.details.nil? || @booking.details.empty?) ? "N/A" : @booking.details %>
+    <br>
+  </p>
+  <hr/>
+  <p>
+    If you have any questions about your order please contact <%= mail_to 'support@justbooked.com', 'support@justbooked.com' %>.
+    <br>
+  </p>
+  <p>
+    Enjoy your meal!
+    <br>
+  </p>
+<% else %>
+  <p>
+    Unfortunately, Chef <%= @booking.recipient.first_name %> is unable to accommodate your order at this time.<br>
+  </p>
+<% end %>
+  <p>
+    The Just Booked Team <br>
+  </p>
+</div>

@@ -1,0 +1,55 @@
+<div class="modal dropzone-modal" data-dropzone-result-dom-id="<%= result_div %>" data-hidden-val-dom-id="<%= hidden_val_dom_id %>" id="dropzoneModal" tabindex="-1" role="dialog" aria-labelledby="dropzoneModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header justify-content-end">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      </div>
+      <div class="modal-body justify-content-center text-center">
+        <%= form_for Asset.new, html: {multipart: true, class: 'dropzone', id: "my-dropzone"}, url: api_assets_path do |f| %>
+          <%= hidden_field_tag "asset[token]", @token %>
+          <%= hidden_field_tag "asset[assetable_id]", assetable_id %>
+          <%= hidden_field_tag "asset[assetable_type]", assetable_type %>
+
+          <div class="dz-message needsclick">
+            <h3>Drop file here</h3> or <strong>click</strong> to upload file(s)
+          </div>
+
+          <div class="fallback">
+            <%= f.file_field :image %>
+            <%= f.submit "upload the Image" %>
+          </div>
+        <% end %>
+        <span>You can always click drop zone or drag images to drop zone to add more images.</span>
+        <br/>
+        <br/>
+        <div class="row form-group-action">
+          <div class="col-12 col-md-6 push-md-6">
+            <button type="button" class="btn btn-primary" style="float: right" onClick="closeDropzoneModal()">DONE</button>
+          </div>
+        </div>
+        <clearfix/>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script type="text/html" id="uploaded_image_template">
+  <img src={{menu_thumb_url}} class='uploaded_image' id="asset_{{id}}" data-delete-url="{{delete_url}}" onClick="openDropzoneModal('menu_images'); return false;">
+</script>
+
+
+<%= javascript_tag do %>
+  function openDropzoneModal(gallery_dom) {
+    var dropzoneModal = $('.dropzone-modal');
+    dropzoneModal.modal('show');
+  }
+
+  function closeDropzoneModal(e) {
+    var dropzoneModal = $('.dropzone-modal');
+    dropzoneModal.modal('hide');
+  }
+<% end %>

@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-12" style="margin-button: 30px">
+    <% if flash[:success] %>
+      <div class="alert alert-success">
+            <%= flash[:success] %>
+      </div>
+      <br/><br/><br/><br/>
+    <% end %>
+
+    <% if flash[:error] %>
+      <div class="alert alert-danger">
+            <%= flash[:error] %>
+      </div>
+      <br/><br/><br/><br/>
+    <% end %>
+  </div>
+</div>

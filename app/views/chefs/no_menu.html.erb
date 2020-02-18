@@ -1,0 +1,43 @@
+<%= render 'shared/breadcrumb' %>
+<div class="detail-top-bg" style="background: url('<%= @chef.main_image_url %>') no-repeat 50%/cover;"></div>
+<div class="container-fluid container-detail" >
+  <div class="media detail-logo">
+    <div class="d-flex mr-3 detail-restaurant-logo-wrap">
+      <img class="img-fluid" src="<%= @chef.profile_image_url %>" alt="<%= @chef.name %>" style="width: 135px; height: 135px">
+    </div>
+    <div class="media-body detail-restaurant d-flex flex-column flex-md-row align-items-center justify-content-between">
+      <div>
+        <h4 class="detail-restaurant-name"><%= @chef.name %><br>(<%= @chef.city %>)</h4>
+        <p class="mb-0 detail-restaurant-address">
+          <strong><%= @chef.order_info_display %></strong>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="certified">
+    <% if @chef.certified? %>
+      <img src="/images/cert_badge_for_mobile.png" alt="Social share" class="img-fluid">
+    <% else %>
+      <img src="/images/un_cert_badge_mobile.png" alt="Social share" class="img-fluid">
+    <% end %>
+  </div>
+  <div class="detail-empty text-center">
+    <img src="/images/detail-empty-icon.png" srcset="/images/detail-empty-icon.png 1x, /images/detail-empty-icon@2x.png 2x" alt="Empty details" class="img-fluid">
+    <h4 class="detail-empty-title">Ooops!</h4>
+    <p class="detail-empty-description"><%= @chef.name %> hasn't added any menu item's yet. Why don't we help them a bit? :) </p>
+    <!-- <a href="add-menu-item.html" class="btn btn-primary card-btn">Vote on what you want to eat!</a> -->
+    <% if current_user && current_user.is_chef? && current_user.chef.id == @chef.id %>
+    <div class="pt-4">
+      <%= link_to "Add Menu Item", new_menu_path, class: 'btn btn-primary card-btn' %>
+    </div>
+    <% else %>
+    <div class="share-wrap">
+      <a href="#" class="share-link">
+        <img src="/images/icons/share.svg" alt="Social share" class="img-fluid" width="24" height="24">
+      </a>
+    </div>
+    <% end %>
+    
+  </div>
+</div>
+</div>

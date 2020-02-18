@@ -1,0 +1,41 @@
+<div class="container">
+   <%= render 'process_navigation' %>
+   <div class="row justify-content-center mt-5 mb-5">
+      <div class="col-12 col-md-8 col-md-offset-4 text-center">
+         <h2>Let’s talk about you!</h2>
+         <p>Please enter your full legal name and address, even if you are a business. We promise not to use this information for anything other than confirming your identity.</p>
+      </div>
+   </div>
+
+   <%= render 'shared/messages', object: @chef %>
+   <%= render partial: 'chef_form', locals: {action: wizard_path} %>
+</div>
+
+
+<script>
+    //<![CDATA[
+    $(document).ready(function() {
+        $(function(){
+            $('.working-checkbox').change(function(e){
+                $('#' + this.dataset.target).toggle();
+                toggleHiddenValue(this.dataset.hiddenTarget);
+            });
+        });
+
+        // Now let's set initial hidden fields value if schedule is off
+        $('input.working-checkbox:checkbox:checked').each(function () {
+            // set the hidden value to false
+            $('#' + this.dataset.target).hide();
+            toggleHiddenValue(this.dataset.hiddenTarget);
+        });
+    });
+    
+    function toggleHiddenValue(target_id) {
+        if ($('#' + target_id).val() === 'false') {
+            $('#' + target_id).val('true')
+        } else {
+            $('#' + target_id).val('false')
+        }
+    }
+    //]]>
+</script>    

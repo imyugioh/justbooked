@@ -1,0 +1,14 @@
+<div class="jb-wizard">
+  <ol class="jb-wizard-list">
+    <li class="jb-wizard-item is-active">
+      <% puts ">>>>>>>>>>>>> step: #{step}"  %>
+      <a href="<%= wizard_path(:chef_info) %>" class="<%= wizard_step_class('chef_info') %>">&nbsp;</a>
+    </li>
+    <li class="jb-wizard-item ">
+      <a href="<%= wizard_path(:first_menu) %>" class="<%= wizard_step_class('first_menu') %>">&nbsp;</a>
+    </li>
+    <li class="jb-wizard-item ">
+      <a href="<%= wizard_path(:payment_info) %>" class="<%= wizard_step_class('payment_info') %>">&nbsp;</a>
+    </li>
+  </ol>
+</div>

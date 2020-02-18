@@ -1,0 +1,70 @@
+<div class="container">
+  <%= render 'process_navigation' %>
+  
+  <div class="row justify-content-center mt-5 mb-5">
+    <div class="col-12 col-md-8 col-md-offset-4 text-center">
+      <h2>Let’s setup your payments</h2>
+      <p>Once your information has been validated you will be able to begin recieving and fulfilling bookings/orders. All payments are deposited directly into your bank account. Transfers take 3-5 business days.</p>
+    </div>
+  </div>
+
+  <%= render 'shared/messages', object: @payment_account %>
+  <br/><br/><br/><br/>
+
+  <%= form_for @payment_account, html: {class: "chefs-form chefs-form--sm mb-5 pb-5"}, url: wizard_path, method: :put do |f| %>
+
+
+    <div class="form-group">
+      <%= f.check_box :stripe_terms_of_services %>&nbsp;&nbsp;
+      <label for=""><strong>Stripe Terms of Services (*)</strong></label>
+      &nbsp;&nbsp;
+      <a href="https://www.shopify.com/legal/terms-payments-gb">Stripe Agreement</a>
+    </div>
+    <div id="main_payment_account_form">
+      <div class="form-group">
+        <label for="">Holder First Name (*)</label>
+        <%= f.text_field :first_name, class: "form-control", placeholder: "First Name" %>
+      </div>
+      <div class="form-group">
+        <label for="">Holder Last Name (*)</label>
+        <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+      </div>
+      <div class="form-group">
+        <label for="">Account Number (*)</label>
+        <%= f.text_field :account_number, class: "form-control", placeholder: "1234567"%>
+      </div>
+      <div class="form-group">
+        <label for="">Currency (*)</label>
+        <%= f.select :currency, options_for_select(PaymentAccount.currency_options, @payment_account.currency), {}, {class: "form-control", selected: 'CAD'} %>
+      </div>
+      <div class="form-group">
+        <label for="">Routing Number (Branch number - Transit number) e.g) 11000-000 (*)</label>
+        <%= f.text_field :routing_number, class: "form-control" %>
+        <div class="help-block small mt-2">Need help finding this number?
+          <a class="small text-primary" href="<%= image_url('popup.png') %>" target="_blank">Click here</a>
+          to see example</div>
+      </div>
+      <hr>
+      <div class="form-group">
+        <label for="">Business Type</label>
+        <%= f.select :business_type, options_for_select(PaymentAccount.business_type_options, @payment_account.business_type), {}, {class: "form-control", selected: 'Individual'} %>
+      </div>
+      <div class="form-group">
+        <label for="">Business Name (optional)</label>
+        <%= f.text_field :business_name, class: "form-control"%>
+      </div>
+      <div class="form-group">
+        <label for="">Business tax id (optional)</label>
+        <%= f.text_field :business_tax_id, class: "form-control" %>
+      </div>
+      <div class="row form-group-action">
+        <div class="col-12 col-md-6 push-md-6">
+          <button type="submit" class="btn btn-primary d-block w-100 text-uppercase">I’m Ready</button>
+        </div>
+        <div class="col-12 col-md-6 pull-md-6 text-md-right">
+          <%= button_to "SKIP (NOT RECOMMENDED)", '/chef_signup/welcome_message', method: :get, class: "btn btn-white d-block w-100" %>
+        </div>
+      </div>      
+    </div>
+  <% end %>
+</div>

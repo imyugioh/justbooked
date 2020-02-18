@@ -1,0 +1,116 @@
+<div class="container">
+  <%= render 'process_navigation' %>
+  <div class="row justify-content-center inv-modal mt-5 gutter">
+    <h4 class="invite-modal__title">Great! Let's grow your customer base.</h4> <br><br>
+  </div>
+  <div class="row no-gutters">
+    <%= form_tag wizard_path, :method => 'put', :class => "row no-gutters" do%>      
+      <div class="col-sm-12 col-md-6 gutter mb-3">
+        <div class="d-flex flex-column"%>      
+          <label for="invitation[contacts]">Step 1. Import contacts and or enter email addresses</label>
+          <textarea name="invitation[contacts]" id="contacts" rows="6" cols="80" class="form-control" placeholder="Add email addresses for customers, friends, and people that you'd like to share your listing with."></textarea>
+          <span class="help-block">(Separate multiple email addresses with commas)</span>
+          <div class="row">
+            <div class="col-lg-4 col-md-12">
+              <a href='#' class="cloudsponge-launch btn btn-primary text-uppercase align-self-end" style="color:white">Import contacts</a>
+            </div>
+            <!-- <div class="col-lg-8 col-md-12">
+              <div class="social1 pull-left">
+                <p>Or use one of these:</p>
+                <ul class="">
+                  <li><a href="" class="img-responsive cloudsponge-launch"><img src="/images/social/gmail.png" alt=""></a></li>
+                  <li><a href="" class="img-responsive cloudsponge-launch"><img src="/images/social/yahoo.png" alt=""></a></li>
+                  <li><a href="" class="img-responsive cloudsponge-launch"><img src="/images/social/outlook.png" alt=""></a></li>
+                  <li><a href="" class="img-responsive cloudsponge-launch"><img src="/images/social/linkedin2.png" alt=""></a></li>
+                </ul>
+              </div> 
+            </div> -->
+          </div>
+        </div>
+      </div>
+            
+      <div class="col-sm-12 col-md-6 gutter">
+        <div class="d-flex flex-column js-form-send-invites">
+          <label for="invitation[:message]">Step 2. Write a bulk message to send to your contacts (or leave it to use default).</label>
+          <textarea name="invitation[message]" rows="6" cols="80" class="form-control mb-3">Hi, it's <%= @chef.first_name %>.&#13;&#10;&#13;&#10;I've created a listing on Just Booked and I'd love for you to try one of my dishes.</textarea>
+          <button type="submit" class="btn btn-primary text-uppercase align-self-end">Send invites</button>
+        </div>
+        </div>
+      </div> 
+    <% end %>
+  </div>
+  <script src="//api.cloudsponge.com/widget/<%= ENV['CLOUDSPONGE_KEY'] %>.js"></script>
+
+
+<%= javascript_tag do %>
+
+    var owner_email, owner_first_name, owner_last_name;
+    var appendInTextarea = true;  // whether to append to existing contacts in the textarea
+    var emailSep = ", ";  // email address separator to use in textarea
+
+    function populateTextarea(contacts, source, owner) {
+      var contact, name, email, entry;
+      var emails = [];
+      var textarea = document.getElementById('contacts');
+      
+      // preserve the original value in the textarea
+      if (appendInTextarea && textarea.value.trim().length > 0) {
+        emails = textarea.value.split(emailSep);
+      }
+      // format each email address properly
+      for (var i = 0; i < contacts.length; i++) {
+        contact = contacts[i];
+        name = contact.fullName();
+        email = contact.selectedEmail();
+        <!-- entry = name + "<" + email +">"; -->
+        if (emails.indexOf(entry) < 0) {
+          emails.push(email);
+        }
+      }
+      // dump everything into the textarea
+      textarea.value = emails.join(emailSep);
+      // capture the owner information
+      // owner_email = (owner && owner.email && owner.email[0] && owner.email[0].address) || "";
+      // owner_first_name = (owner && owner.first_name) || "";
+      // owner_last_name = (owner && owner.last_name) || "";
+    }
+
+
+
+
+  // CloudSponge List
+
+  window.csPageOptions = {
+    sources: ["gmail", "yahoo", "linkedin", "icloud", "addressbook", "outlook"],
+    filter: function(contact) {
+        return contact.email.length > 0;
+    },
+    // pass only the selected contacts to the contactListCtrl
+    afterSubmitContacts: populateTextarea
+  };
+
+<!-- afterSubmitContacts: "<%= ENV['CLOUDSPONGE_WEBHOOK_URL'] %>" -->
+
+
+<% end %>
+
+
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+ fbq('init', '176775526280118'); 
+fbq('track', 'CompleteRegistration');
+</script>
+<noscript>
+ <img height="1" width="1" 
+src="https://www.facebook.com/tr?id=176775526280118&ev=PageView
+&noscript=1"/>
+</noscript>
+<!-- End Facebook Pixel Code -->

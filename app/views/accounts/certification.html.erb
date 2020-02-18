@@ -1,0 +1,81 @@
+<div class="row justify-content-center">
+
+  <% if @chef.certified? %>
+    <div class="col-12">
+      <div class="alert alert-success">
+        You are already a certified chef
+      </div>
+    </div>
+  <% end %>
+
+  <% if @chef.documents_uploaded %>
+    <div class="col-12">
+      <div class="alert alert-success">
+        You are already a certified chef
+      </div>
+    </div>
+  <% end %>
+
+
+  <% if flash[:success] %>
+    <div class="col-12">
+      <div class="alert alert-success">
+        <%= flash[:success] %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if flash[:error] %>
+    <div class="col-12">
+      <div class="alert alert-error">
+        <%= flash[:error] %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="col-12">
+    <h4 class="text-center text-lg-left">Get Your Certified Food Handler Badge</h4>
+  </div>
+  <div class="col-lg-6 col-md-12 justify-content-center">
+    <img src="/images/cert_badge_for_desktop.png" alt="img-fluid">
+  </div>
+  <div class="col-lg-6 col-md-12">
+    <h5 class="text-center text-lg-left">
+      Why do I need this? And How do I get it?
+    </h5>
+    <p>By having the Certified Food Handler badge displayed on your listing you will be listed above others who are uncertified and receive more orders. We do not promote uncertified chefs and Just Booked users rarely order from chefs who are uncertified. If you do not yet have a food handlers and safety license visit: www.foodsafety.ca/and start your certification process!</p>
+    <p>Once you've obtained a food handlers and safety certification or license you can scan it, or take a picture of it and upload it in the below field. You must also upload a piece of Photo ID that displays your first and last name after we review your documents, we will notify you on you if your request have been successful and add the badge to your page!</p>
+
+    <p>If you have any other questions we're happy to help! <br>support@justbooked.com</p>
+    
+  </div>
+  <br/>
+  <br/>
+  <div class="col-12">
+
+    <%= form_for @chef, html: {class: "chefs-form", multipart: true}, url: save_certification_documents_account_path, method: :put do |f| %>
+      <%= hidden_field_tag "documents[token]", @token %>
+
+
+      <div class="form-group">
+        <label for="food">Food Handler License Upload(*)</label><br/>
+        <%= file_field(:documents, :food_handler_certification) %>
+      </div>
+      <div class="form-group">
+        <label for="identifi">Personal Identification (ID) Upload(*)</label><br/>
+        <%= file_field(:documents, :personal_identification) %>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 offset-lg-6">
+          <button type="submit" class="btn btn-primary btn-block">SAVE</button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+

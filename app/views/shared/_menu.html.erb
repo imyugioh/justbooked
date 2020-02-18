@@ -1,0 +1,13 @@
+<div class="col-md-3">
+  <figure class="restaurant crystal-border">
+    <a href="<%= menu.chef.my_listings_path %>" class="restaurant-link">
+      <img src=<%= menu.main_image_url %> alt=<%= menu.name %> class="restaurant-img rounded" width="270" height="220">
+    </a>
+    <figcaption style="padding: 8px;">
+      <h6 class="restaurant-title">
+        <a href="<%= menu.chef.my_listings_path %>" style="color: inherit;"><%= menu.name %></a>
+      </h6>
+      <div class="restaurant-price"><%= menu.display_price %></div>
+    </figcaption>
+  </figure>
+</div>

@@ -1,0 +1,12 @@
+<%= form_tag payment_path, id: :paymentForm do %>
+    <script
+        src="https://checkout.stripe.com/checkout.js" 
+        data-image="/images/brand.svg"
+        data-locale="auto"
+        data-currency="cad">
+    </script>
+    <%= hidden_field_tag 'stripeToken' %>
+    <%= hidden_field_tag 'stripeEmail' %>
+    <%= hidden_field_tag 'stripeAmount' %>
+    <%= hidden_field_tag 'orderDetail' %>
+<% end %>

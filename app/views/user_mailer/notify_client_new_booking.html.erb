@@ -1,0 +1,19 @@
+<div class="header">
+  Order request for <%= @venue.name %>
+</div>
+<div class="content">
+ <p>Hi, <%= @user.nil? ? @booking.full_name : @user.full_name %>.</p>
+  <p>
+    You've ordered <%= @package.title %> from Chef <%= @booking.recipient.first_name %>.
+    This is not a confirmed reservation yet.
+  </p>
+  <p>
+    The chef has received your order and has up to 30 minutes to respond, and accept or decline the order. We'll notify you as soon as the chef responds.
+  </p>
+  <p>
+    Thanks for your patience.
+  </p>
+  <p>
+    The Just Booked Team
+  </p>
+</div>

@@ -1,0 +1,388 @@
+<%= nested_form_for @chef, html: {class: "chefs-form", multipart: true}, url: action, method: :put do |f| %>
+
+<%= hidden_field_tag "assets[token]", @token %>
+    
+<div class="row">
+   <div class="col-12 col-sm-6">
+      <div class="form-group">
+         <label for="">Legal name</label>
+         <%= f.text_field :first_name, class: "form-control", placeholder: "First Name" %>
+      </div>
+   </div>
+   <div class="col-12 col-sm-6">
+      <div class="form-group">
+         `<label for="" class="invisible">Last name</label>
+         <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+      </div>
+   </div>
+</div>
+<div class="row">
+   <div class="col-12 col-sm-8">
+      <div class="form-group">
+         <label for="">Home address</label>
+         <%= f.text_field :address1, class: "form-control", placeholder: "27 Smithwood Dr." %>
+      </div>
+   </div>
+   <div class="col-12 col-sm-4">
+      <div class="form-group">
+         <label for="" class="invisible">App/Unit</label>
+         <%= f.text_field :address2, class: "form-control", placeholder: "App/Unit" %>
+      </div>
+   </div>
+</div>
+<div class="row">
+   <div class="col-12 col-sm-4">
+      <div class="form-group">
+         <label for="">Postal code</label>
+         <%= f.text_field :zip, class: "form-control", placeholder: "M9B4R7" %>
+      </div>
+   </div>
+   <div class="col-12 col-sm-4">
+      <div class="form-group">
+         <label for="">City</label>
+         <%= f.text_field :city, class: "form-control", placeholder: "ETOBICOKE" %>
+      </div>
+   </div>
+   <div class="col-12 col-sm-4">
+      <div class="form-group">
+         <label for="">Province</label>
+         <%= f.text_field :state, class: "form-control", placeholder: "Ontario" %>
+      </div>
+   </div>
+</div>
+
+<% if @chef.class.name == 'Chef' %>
+  <div class="row">
+    <div class="col-12 col-sm-4 pull-left">
+        <div class="form-group">
+          <label for="">Date of Birth <span class="small text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Please enter your mobile-phone number here. We will use this number to send you SMS/text notifications about your order.">(?)</span></label>
+          <%= f.text_field :dob, value: to_display_date(@chef.dob), class: "form-control", placeholder: "DD/MM/YYYY" %>
+        </div>
+        <div class="col-12 col-sm-4">
+          <div class="form-group">
+              <span/>
+          </div>
+        </div>
+        <div class="col-12 col-sm-4">
+          <div class="form-group">
+              <span/>
+          </div>
+        </div>
+    </div>
+  </div>
+  <clearfix/>
+
+<% end %>
+
+
+<div class="row">
+   <div class="col-12 col-sm-6">
+      <div class="form-group">
+         <label for="">Phone number <span class="small text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Help info">(?)</span></label>
+         <%= f.telephone_field :phone, class: "form-control", placeholder: "(000) 000-0000"  %>
+      </div>
+   </div>
+   <% if @chef.class.name == 'Chef' %>
+    <div class="col-12 col-sm-6">
+        <div class="form-group"><label for="">Email address</label>
+        <%= f.email_field :email, class: "form-control", placeholder: "example@email.com", value: @chef.email %>
+        </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="row">
+  <% if @chef.class.name == 'Chef' %>
+   <div class="col-12 col-sm-6">
+      <div class="form-group">
+         <label for="">Phone number (Secondary) <span class="small text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Help info">(?)</span></label>
+         <%= f.telephone_field :phone_sec, class: "form-control", placeholder: "(000) 000-0000"  %>
+      </div>
+   </div>
+    <div class="col-12 col-sm-6">
+        <div class="form-group"><label for="">Email address (Secondary) </label>
+        <%= f.email_field :email_sec, class: "form-control", placeholder: "example@email.com" %>
+        </div>
+    </div>
+  <% end %>
+</div>
+
+   <% if @chef.class.name == 'Chef' %>
+
+    <div class="row">
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+              <label for="">Profile picture (must be 135×135 pixels or above)</label>
+              <% if  @chef && @chef.has_profile_image? %>
+                <label for="">Upload a new image if you want to replace existing.</label>
+              <% end %>
+              <!-- <label class="custom-file w-100"> -->
+              <%= file_field(:assets, :profile_image) %>
+              <!-- <span class="custom-file-control"></span> -->
+              </label>
+              <div style="margin-top: 20px">
+                <% if @chef.has_profile_image? %>
+                    <%= image_tag @chef.profile_image_url, style: "width: 135px" %>
+                <% else %>
+                    <%= image_tag Asset.default_chef_profile.image.url, style: "width: 135px" %>
+                <% end %>
+              </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+              <label for="">Header image (must be 1600×320 pixels or above)</label>
+              <% if @chef && @chef.has_header_image? %>
+              <label for="">Upload a new image if you want to replace existing.</label>
+              <% end %>
+              <!-- <label class="custom-file w-100"> -->
+              <%= file_field(:assets, :header_image) %>
+              <!-- <span class="custom-file-control"></span> -->
+              </label>
+              <div style="margin-top: 20px">
+                <% if @chef.has_header_image? %>
+                    <%= image_tag @chef.main_image_url, size: "400x80" %>
+                <% else %>
+                    <%= image_tag Asset.default_chef_header.image.url, size: "400x80" %>
+                <% end %>
+              </div>
+          </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="description">About me</label>
+          <%= f.text_area :about, class: "form-control",  cols: "30", rows: "10", placeholder: "Write description about yourself" %>
+    </div>
+    <div class="form-group">
+      <span><b>About Pre-order</b></span>
+       <!-- <button type="button" class="btn-link" data-toggle="modal" data-target="#calendarModal">Open work scheduler</button> -->
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+              <label for="">Pre-order minimum order amount ($)</label>
+                <%= f.select :pre_order_min_order_amount, options_for_select(amount_filters, @chef.pre_order_min_order_amount), {}, {class: "form-control"} %>
+              </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+              <label for="">Pre-order minimum notice (in hours)</label>
+              <%= f.select :pre_order_notice_hour, options_for_select(hour_filters, @chef.pre_order_notice_hour), {}, {class: "form-control"} %>
+          </div>
+        </div>        
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+              <label for="">Max. distance you’re willing to deliver to (in km)</label>
+              <%= f.select :max_delivery_distance, options_for_select(distance_filters, @chef.max_delivery_distance), {}, {class: "form-control"} %>
+          </div>
+        </div>      
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+              <label for="">Flat delivery fee($)</label>
+                <%= f.text_field :delivery_fee, class: "form-control", placeholder: "$10", value: "$#{f.object.delivery_fee}" %>
+              </div>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-sm-6">
+        <div class="form-group">
+          <label for="">Minimum order amount for free delivery ($)</label>
+          <%= f.text_field :free_delivery_min_order_amount, class: "form-control", placeholder: "$50", value: "$#{f.object.free_delivery_min_order_amount}" %>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6">
+        <div class="form-group">
+            &nbsp;
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+              <label for="">Pickup NOT available&nbsp;&nbsp;</label>
+                <label class="switch">
+                  <input type="checkbox"  name="chef[pickup_available]" <%= @chef.pickup_available ? 'checked' : '' %>>
+                  <span class="slider"></span>
+                </label>
+              <label for="">&nbsp;&nbsp;Available</label>
+
+              </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            &nbsp;
+          </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <span><b>On-site Cooking</b></span>
+    </div>
+
+
+    <div class="row">
+      <div class="col-12 col-sm-6">
+        <div class="form-group">
+            <label for="">No on-site cooking &nbsp;&nbsp;</label>
+              <label class="switch">
+                <input type="checkbox" name="chef[onsite_cooking_available]" <%= @chef.onsite_cooking_available ? 'checked' : '' %>>
+                <span class="slider"></span>
+              </label>
+            <label for="">&nbsp;&nbsp;I offer on-site cooking</label>
+
+            </div>
+      </div>
+      <div class="col-12 col-sm-6">
+        <div class="form-group">
+          <label for="">Minimum order amount for on-site cooking ($)</label><br/>
+          <%= f.text_field :min_fee_for_onsite_cooking, class: "form-control", placeholder: "$45", value: "$#{f.object.min_fee_for_onsite_cooking}" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <span><b>Menu Categories</b></span>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-sm-6">
+        <div class="form-group account-menu-categories">
+          <%= f.fields_for :menu_categories do |menu_category| %>
+            <%= menu_category.text_field :name, class: "form-control form-control-sm" %>
+            <%= menu_category.link_to_remove do %>
+              <button class="btn btn-sm btn-link btn-remove js-remove-checkbox ml-1" onclick="ShowConfirmDialog(<%= menu_count(menu_category.object.try(:id)) %>, <%= menu_category.object.id %>)" id=<%='js-remove-checkbox-' + menu_category.object.id.to_s%> type="button">
+                <img src="/images/icons/remove.png" srcset="/images/icons/remove.png 1x, /images/icons/remove@2x.png 2x" alt="Remove" width="12">
+              </button>
+            <% end %>
+            <% if menu_category.object.id %>
+              <span><%= menu_count_info(menu_category.object.try(:id)) %></span>
+            <% end %>
+          <% end %>
+          <p><%= f.link_to_add "+ Add new", :menu_categories, class: "btn-link" %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <span><b>Cuisine Types</b></span>
+    </div>
+
+    <div class="row">
+      <% tag_items = split(cuisine_types(@chef)) %>
+      <% first_half = tag_items[:first_half] %>
+      <% second_half = tag_items[:second_half] %>
+      <div class="col-12 col-sm-6 col-md-4">
+        <% first_half.each do |cuisine_type| %>
+          <div>
+            <label class="custom-control custom-checkbox">
+              <%= check_box_tag 'tags[cuisine_types][]', cuisine_type.name, has_this_cuisine_type?(@chef, cuisine_type.name), class: 'custom-control-input', id: "cuisine_type_#{cuisine_type.id}" %>
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description"><%= cuisine_type.name %></span>
+            </label>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4">
+        <% second_half.each do |cuisine_type| %>
+          <div>
+            <label class="custom-control custom-checkbox">
+              <%= check_box_tag 'tags[cuisine_types][]', cuisine_type.name, has_this_cuisine_type?(@chef, cuisine_type.name), class: 'custom-control-input', id: "cuisine_type_#{cuisine_type.id}" %>
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description"><%= cuisine_type.name %></span>
+            </label>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4">
+        <button type="button" class="btn-link js-add-cuisine-type-checkbox">+ Add new</button>
+      </div>
+    </div>
+
+    <div class="form-group mt-20">
+      <span><b>Event Types</b></span>
+    </div>
+
+    <div class="row">
+      <% tag_items = split(Chef::EVENT_TYPES) %>
+      <% first_half = tag_items[:first_half] %>
+      <% second_half = tag_items[:second_half] %>
+      <div class="col-12 col-sm-6 col-md-4">
+        <% first_half.each do |event_type| %>
+          <div>
+            <label class="custom-control custom-checkbox">
+              <%= check_box_tag 'chef[event_types][]', event_type, has_this_event_type?(@chef, event_type), class: 'custom-control-input' %>
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description"><%= event_type %></span>
+            </label>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4">
+        <% second_half.each do |event_type| %>
+          <div>
+            <label class="custom-control custom-checkbox">
+              <%= check_box_tag 'chef[event_types][]', event_type, has_this_event_type?(@chef, event_type), class: 'custom-control-input' %>
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description"><%= event_type %></span>
+            </label>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="form-group mt-20">
+      <span><b>Other Features</b></span>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-4">
+        <label class="custom-control custom-checkbox">
+          <%= check_box_tag 'chef[shareables]', true, @chef.shareables?, class: 'custom-control-input' %>
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Shareables</span>
+        </label>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4">
+        <label class="custom-control custom-checkbox">
+          <%= check_box_tag 'chef[individually_packaged]', true, @chef.individually_packaged?, class: 'custom-control-input' %>
+        <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Individually Packaged</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group mt-20">
+      <span><b>Price Category</b></span>
+    </div>
+
+    <div class="row">
+      <% Chef::PRICE_CATEGORIES.each_with_index do |price, index| %>
+        <div class="col-12">
+          <label class="custom-control custom-radio">
+            <%= f.radio_button :price_category, price, checked: @chef.price_category == price.to_s, class: 'custom-control-input' %>
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description"><%= '$' * index %>$</span>
+          </label>
+        </div>
+      <% end %>
+    </div>
+   <% end %>
+
+   <br/>
+   <br/>
+
+   <div class="row form-group-action">
+      <div class="col-6">
+         <button type="submit" class="btn btn-primary">SAVE</button>
+      </div>
+      <div class="col-6 text-right">
+        &nbsp;
+      </div>
+   </div>
+<% end %>

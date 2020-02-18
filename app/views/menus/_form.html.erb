@@ -1,0 +1,328 @@
+<%= nested_form_for @menu, html: {class: "chefs-form mb-5 pb-5 dz-clickable", id: 'chef-form'}, url: url , method: (method || :put) do |f| %>
+
+    <%= hidden_field_tag :assets, @menu.assets.pluck(:id).join(',') %>
+    <%= f.hidden_field :id %>
+
+    <div class="row">
+      <div class="col-12" style="margin-button: 30px">
+        <% if flash[:success] %>
+          <div class="alert alert-success">
+                <%= flash[:success] %>
+          </div>
+          <br/><br/><br/><br/>
+        <% end %>
+
+        <% if flash[:error] %>
+          <div class="alert alert-danger">
+                <%= flash[:error] %>
+          </div>
+          <br/><br/><br/><br/>
+        <% end %>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-12 col-sm-6">
+        <div class="form-group">
+          <label for="">Name of Menu Item</label>
+          <%= f.text_field :name, class: "form-control", placeholder: "What’s the name of the menu item that you’d like to offer?" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-sm-4">
+        <div class="form-group">
+          <label for="">Type of the menu</label>
+          <%= f.select :menu_type, Menu.menu_types_options, {selected: f.object.menu_type}, {class: "form-control"} %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" id="file-upload">
+      <button type="reset" class="btn btn-white" onClick="openDropzoneModal('menu_images'); return false;">Click to upload images</button>
+        <% if @menu.assets %>
+          <div style="margin-top: 20px">
+            <label for="">Click 'x' to delete uploaded images</label>
+            <div class="img-container">
+              <% if @menu.assets.present? %>
+                <p>existing images</p>
+              <% end %>
+              <% @menu.assets.each do |asset| %>
+                <div class="dialog" style="width: 195px; height: 100px" id="asset_<%= asset.id %>">
+                  <a href='#' class='close-thik' onClick="deleteAsset(<%= asset.id %>, 'asset_<%= asset.id %>', '<%= asset.delete_url %>'); return false;"><%= image_tag asset.image.url(:menu_thumb) %></a>
+                </div>
+              <% end %>
+            </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-sm-6">
+        <div class="form-group">
+          <div id="menu_images" class="dz-preview dz-processing dz-image-preview dz-success dz-complete">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="">Describe the menu item</label>
+      <%= f.text_area :description, class: "form-control",  cols: "30", rows: "10", placeholder: "Here is where you really sell the dish - what ingredients does it contain? how do you cook it? why do you enjoy cooking it? Why should customers order it from you instead of someone else?" %>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <div class="form-group">
+          <label for="">Price (<%= price_description(f.object) %>)</label>
+          <%= f.text_field :price, class: "form-control", placeholder: "$5" %>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="form-group">
+          <label for="">Per</label>
+          <%= f.text_field :per, class: "form-control"%>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4">
+        <div class="form-group">
+          <label for="">Minimum Order Amount</label>
+          <%= f.text_field :min_order_amount, class: "form-control"%>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-md-12">
+        <div class="form-group">
+          <label for="">Auto accept booking
+            <span class="small text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Select total people per day to auto accept. You won’t have to manually accept or decline incoming bookings">(?)</span>
+          </label>
+          <div class="form-group">
+           Yes: <%= f.radio_button :auto_accept, true, :checked => @menu.auto_accept == true %>
+           &nbsp;&nbsp;
+           No: <%= f.radio_button :auto_accept, false, :checked => @menu.auto_accept == false %>
+           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="multiple-checkbox">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" role="tab" href="#cuisine-type">Cuisine Type (<%= @menu.cuisine_type.count %>)</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" role="tab" href="#dietary-restrictions">Dietary Prefs (<%= @menu.dietary_type.count %>)</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" role="tab" href="#menu-categories">Menu Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" role="tab" href="#order-selection">Order Selection (<%= @menu.menu_items.count %>)</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" role="tab" href="#add-ons">Add Ons (<%= @menu.addons.count %>)</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="cuisine-type" role="tabpanel">
+            <div class="row">
+              <% tag_items = split(cuisine_types(@menu)) %>
+              <% first_half = tag_items[:first_half] %>
+              <% second_half = tag_items[:second_half] %>
+              <div class="col-12 col-sm-6 col-md-4">
+                <% first_half.each do |cuisine_type| %>
+                  <div>
+                    <label class="custom-control custom-checkbox">
+                      <%= check_box_tag 'tags[cuisine_types][]', cuisine_type.name, has_this_cuisine_type?(@menu, cuisine_type.name), class: 'custom-control-input', id: "cuisine_type_#{cuisine_type.id}" %>
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-description"><%= cuisine_type.name %></span>
+                    </label>
+                  </div>
+                <% end %>
+              </div>
+              <div class="col-12 col-sm-6 col-md-4">
+                <% second_half.each do |cuisine_type| %>
+                  <div>
+                    <label class="custom-control custom-checkbox">
+                      <%= check_box_tag 'tags[cuisine_types][]', cuisine_type.name, has_this_cuisine_type?(@menu, cuisine_type.name), class: 'custom-control-input', id: "cuisine_type_#{cuisine_type.id}" %>
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-description"><%= cuisine_type.name %></span>
+                    </label>
+                  </div>
+                <% end %>
+              </div>
+              <div class="col-12 col-sm-6 col-md-4">
+                <button type="button" class="btn-link js-add-cuisine-type-checkbox">+ Add new</button>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="dietary-restrictions" role="tabpanel">
+            <div class="row">
+              <% tag_items = split(dietary_types(@menu)) %>
+              <% first_half = tag_items[:first_half] %>
+              <% second_half = tag_items[:second_half] %>
+
+              <div class="col-12 col-sm-6 col-md-4">
+                <% first_half.each do |dietary_type| %>
+                  <div>
+                    <label class="custom-control custom-checkbox">
+                      <%= check_box_tag 'tags[dietary_types][]', dietary_type.name, has_this_dietary_type?(@menu, dietary_type.name), class: 'custom-control-input', id: "dietary_type#{dietary_type.id}" %>
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-description"><%= dietary_type.name %></span>
+                    </label>
+                  </div>
+                <% end %>
+              </div>
+              <div class="col-12 col-sm-6 col-md-4">
+                <% second_half.each do |dietary_type| %>
+                  <div>
+                    <label class="custom-control custom-checkbox">
+                      <%= check_box_tag 'tags[dietary_types][]', dietary_type.name, has_this_dietary_type?(@menu, dietary_type.name), class: 'custom-control-input', id: "dietary_type#{dietary_type.id}" %>
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-description"><%= dietary_type.name %></span>
+                    </label>
+                  </div>
+                <% end %>
+              </div>
+              <div class="col-12 col-sm-6 col-md-4">
+                <button type="button" class="btn-link js-add-dietary-type-checkbox">+ Add new</button>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="menu-categories" role="tabpanel">
+            <div class="row">
+              <% menu_categories = split(@chef.menu_categories) %>
+              <% first_half = menu_categories[:first_half] %>
+              <% second_half = menu_categories[:second_half] %>
+
+              <div class="col-12 col-sm-6 col-md-6">
+                <% first_half.each do |category| %>
+                  <div>
+                    <label class="custom-control custom-radio">
+                    <%= f.radio_button :menu_category_id, category.id, class: 'custom-control-input' %>
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description"><%= category.name %></span>
+                  </div>
+                <% end %>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-6">
+                <% second_half.each do |category| %>
+                  <div>
+                    <label class="custom-control custom-radio">
+                    <%= f.radio_button :menu_category_id, category.id, class: 'custom-control-input' %>
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description"><%= category.name %></span>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="order-selection" role="tabpanel">
+            <div class="row">
+              <div class="form-group order-selection-container">
+                <%= f.fields_for :menu_items do |menu_item| %>
+                  <%= menu_item.text_field :name, placeholder: "Menu item name", class: "form-control form-control-sm", style: "margin-right: 10px" %>
+                  <%= menu_item.text_field :price, placeholder: "$$", class: "form-control form-control-sm" %>
+                  <%= menu_item.link_to_remove do %>
+                    <button class="btn btn-sm btn-link btn-remove js-remove-checkbox ml-1" type="button" style="margin-right: 10px;">
+                      <img src="/images/icons/remove.png" srcset="/images/icons/remove.png 1x, /images/icons/remove@2x.png 2x" alt="Remove" width="12">
+                    </button>
+                  <% end %>
+                <% end %>
+                <%= f.link_to_add "+ Add new", :menu_items, class: "btn-link" %>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="add-ons" role="tabpanel">
+            <div class="row">
+              <div class="form-group order-selection-container">
+                <%= f.fields_for :addons do |addon| %>
+                  <%= addon.text_field :name, placeholder: "Addon name", class: "form-control form-control-sm", style: "margin-right: 10px" %>
+                  <%= addon.text_field :price, placeholder: "$$", class: "form-control form-control-sm" %>
+                  <%= addon.link_to_remove do %>
+                    <button class="btn btn-sm btn-link btn-remove js-remove-checkbox ml-1" type="button" style="margin-right: 10px;">
+                      <img src="/images/icons/remove.png" srcset="/images/icons/remove.png 1x, /images/icons/remove@2x.png 2x" alt="Remove" width="12">
+                    </button>
+                  <% end %>
+                <% end %>
+                <%= f.link_to_add "+ Add new", :addons, class: "btn-link" %>
+              </div>
+            </div>
+          </div>
+        </div> <!-- Tab content -->
+      </div> <!-- multiple-checkbox -->
+    </div> <!-- form-group -->
+
+
+    <% if controller_name == 'menus' %>
+      <div class="row form-group-action text-center">
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary" id="save_men">SAVE</button>
+        </div>
+      </div>    
+    <% else %>
+      <div class="row form-group-action">
+        <div class="col-12 col-md-6 push-md-6">
+          <button type="submit" class="btn btn-primary">CONTINUE</button>
+        </div>
+        <div class="col-12 col-md-6 pull-md-6 text-md-right">
+          <%= link_to "SKIP (NOT RECOMMENDED)", wizard_path(:payment_info), class: "btn btn-white" %>
+        </div>
+      </div>    
+    <% end %>
+
+<% end %>
+
+
+<%= javascript_tag do %>
+
+  function deleteAsset(asset_id, dom_id, delete_url) {
+    // make a DELETE ajax request to delete the file
+    $.ajax({
+      type: 'DELETE',
+      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+      url: delete_url,
+      success: function(data){
+        $(`#${dom_id}`).remove();
+        var stringAssetId = String(asset_id);
+        var assets_val = $('#assets').val().split(',');
+        if (assets_val.length > 0) {
+          var filteredArray = assets_val.filter(function(e) { return e !== stringAssetId });
+          $('#assets').val(filteredArray.join(','));
+        }
+      }
+    });
+  }
+
+  $("#chef-form").submit(function( event ) {
+    event.preventDefault();
+    $('#validation-errors').empty();
+    var assets = $('#assets').val();
+
+    if (!assets) {
+      if ($("#validation-errors").length > 0) {
+        $("#validation-errors").append("<li id='error_menu_assets' class='list-group-item list-group-item-danger'>Menu should have at least one image</li>");
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+      } else {
+        $("html, body").animate({ scrollTop: $("#file-upload").offset().top - 30}, "slow");
+        $("#file-upload").css({
+          'border-color': 'red',
+          'border-style': 'dotted',
+          'padding': '20px'
+        });
+      }
+    } else {
+      this.submit();
+    }
+  });
+
+<% end %>
+
+
+<%= render 'shared/dropzone_form', {result_div: 'menu_images', hidden_val_dom_id: 'assets', assetable_type: @menu.class.name, assetable_id: @menu.id} %>

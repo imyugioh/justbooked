@@ -1,0 +1,89 @@
+<div class="container your-reviews"> 
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="mt-5 mb-20">Your reviews</h3>
+      <% @menus.each do |item| %>
+        <div class="row bor-b mb-15 pb-3">
+          <div class="col-md-12" style="padding-bottom: 20px">
+            <p class="title"><%= item.name %></p>
+            <p class="name">By Chef&nbsp;<%= item.chef.first_name || 'Unknown' %></p>
+            <span class="px-0 jq-ry-container" readonly="readonly" style="width: 91px;">
+              <div class="jq-ry-group-wrapper" id=<%='wrapper-' + item.id.to_s%>>
+                <div class="jq-ry-normal-group jq-ry-group"><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#a2a5aa"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#a2a5aa" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#a2a5aa" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#a2a5aa" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#a2a5aa" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg>
+                </div>
+                <div class="jq-ry-rated-group jq-ry-group" id=<%='rated-star-'+item.id.to_s %> style="width: 0%;"><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#f21400"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#f21400" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#f21400" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#f21400" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#f21400" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg></div></div>
+              </span>
+          </div>
+          <div class="col-md-3 col-sm-12 product-image-position">
+            <% item.assets.each do |asset| %>
+              <div class="product-image" style="background-image: url(<%= asset.image.url(:original) %>);"></div>
+             <% end %>
+          </div>
+          <div class="col-md-9 col-sm-12 text-right">
+            <div class="form-group">
+              <textarea class="form-control" id=<%="exampleTextarea"+item.id.to_s%> rows="7" placeholder="Write your review here"></textarea>
+              <div id=<%='review-validation-'+item.id.to_s %> style="text-align: left; color:red"></div>
+            </div>
+            <button class="btn btn-primary right-align" id=<%='feedback-submit-' + item.id.to_s%>>SUBMIT</button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+    
+<section class="section-newsletter">
+  <div class="container">
+    <h6 class="newsletter-title">Join the insiders club</h6>
+    <p class="newsletter-text">and get updates on the newest and hottest restaurants.</p>
+    <form action="index.html" method="post" class="newsletter-form mx-auto">
+      <input type="text" name="" value="" class="form-control newsletter-input newsletter-input--email" placeholder="Enter your email">
+    </form>
+  </div>
+</section>
+
+<script>
+  var star_rating, tmp, domRect, clientWidth, width;
+
+  <% @menus.each do |item| %>
+    document.getElementById("<%='wrapper-' + item.id.to_s%>").addEventListener("click", function(e){
+      tmp = document.getElementById("<%='wrapper-' + item.id.to_s%>");
+      domRect = tmp.getBoundingClientRect();
+      clientWidth = tmp.clientWidth;
+      width = parseInt((e.clientX - domRect.x)/clientWidth*100);
+      if ( width%20 != 0) {
+        width = (parseInt(width/20) + 1) * 20;
+      }
+      document.getElementById("<%='rated-star-' + item.id.to_s %>").style.width = width + '%';
+    });
+
+    document.getElementById("<%='feedback-submit-' + item.id.to_s %>").addEventListener("click", function(e){
+      tmp = document.getElementById("<%='rated-star-' + item.id.to_s%>");
+      if ( document.getElementById("<%='exampleTextarea' + item.id.to_s%>").value == '' && parseInt(tmp.style.width, 10)/20 == 0) {
+        $("<%='#review-validation-' + item.id.to_s%>").html("Please select a rating and leave a review before submitting.");
+
+      } else if ( document.getElementById("<%='exampleTextarea' + item.id.to_s%>").value == '' ) {
+        $("<%='#review-validation-' + item.id.to_s%>").html("Please leave feedback before submitting.");
+      } else if ( parseInt(tmp.style.width, 10)/20 == 0 ) {
+        $("<%='#review-validation-' + item.id.to_s%>").html("Please select a rating before submitting.");
+      } else {
+        document.getElementById("<%='feedback-submit-' + item.id.to_s %>").disabled = true;
+        $.ajax({
+          type: 'POST',
+          beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+          url: 'save_review',
+          data: {
+            feedback: document.getElementById("<%='exampleTextarea' + item.id.to_s%>").value,
+            rate_marks: parseInt(tmp.style.width, 10)/20,
+            menu_id: <%= item.id %>,
+            purchase_id: '<%= params[:id] %>'
+          },
+          success: function(data) {
+            document.location.reload(true);
+          }
+        });
+      }
+    });
+  <% end %>
+
+</script>

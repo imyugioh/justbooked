@@ -1,0 +1,33 @@
+<div id="<%= data_target %>" class="modal modal-gallery bd-example-modal-lg js-modal-root" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+   <div class="modal-dialog container-detail">
+      <div class="modal-content js-modal-gallery">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+         </button>
+         <div class="swiper-container js-modal-swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper js-modal-slides">
+               <% menu.assets.each do |asset| %>
+                  <div class="swiper-slide">
+                     <img class="rounded" src=<%= asset.image.url(:menu_large) %> alt=<%= menu.name %>>
+                  </div>
+               <% end %>
+            </div>
+         </div>
+         <div class="swiper-container swiper-text js-modal-swiper-text">
+            <div class="swiper-wrapper">
+               <% menu.assets.each do |asset| %>
+                  <div class="swiper-slide">
+                     <h4><%= menu.name %></h4>
+                     <p><%= menu.description %></p>
+                  </div>
+               <% end %>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+         </div>
+      </div>
+   </div>
+</div>
+  

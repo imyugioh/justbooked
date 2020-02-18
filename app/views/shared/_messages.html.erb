@@ -1,0 +1,23 @@
+<% if object && object.errors.any? %>
+<div class="row">
+  <div class="alert alert-error">
+    <a class="close" data-dismiss="alert">&#215;</a>
+    <ul class="list-group" id="validation-errors">
+      <% object.errors.full_messages.each do |msg| %>
+        <%= content_tag :li, msg, :id => "error_#{error_msg_to_id(msg)}", class: 'list-group-item list-group-item-danger' if msg.is_a?(String) %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>
+
+<% if flash[:success] %>
+<div class="row">
+  <div class="col-12 col-sm-12">
+    <div class="alert alert-success">
+      <%= flash[:success] %>
+    </div>
+    <br/><br/><br/><br/>
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,34 @@
+
+<section class="login-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="wraper mt-50">
+
+          <div class="hed-login mt-50">
+            <div class="wrap-img">
+              <img src="/images/brand2.svg" alt="Just Booked" class="img-responsive">
+            </div>
+            <h5 class="hed-login-text text-center mt-25">Forgot password?</h5>
+          </div>
+          <div class="content-login">
+            <div class="row signinErrors"></div>
+            <%= form_for(resource, as: resource_name, url: user_password_path, html: { method: :post }) do |f| %>
+
+              <div class="form-group">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+              </div>
+
+
+              <%= f.submit 'Send me reset password instructions', class: 'btn btn-primary mb-24 btn-block' %>
+              <%= render "api/users/shared/links" %>
+            <% end -%>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

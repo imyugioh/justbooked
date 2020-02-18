@@ -1,0 +1,21 @@
+<% content_for :header do %>
+Unfortunately, chef <%= @chef.first_name %> isn’t able to service your order at this time.
+<% end %>
+
+<% content_for :message do %>
+
+<p>
+Hi <%= @user.first_name %>,
+
+This doesn't usually happen! Sorry for the inconvenience. 
+
+We recommend that you try the below similar options:
+</p>
+
+<p>TODO: suggestions</p>
+
+<p>Best,<br/>
+The Justbooked Team
+<!-- <a href="http://www.justbooked.com">www.justbooked.com</a><br/> -->
+</p>
+<% end %>

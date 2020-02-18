@@ -1,0 +1,20 @@
+<div class="w-20 hidden-sm-down">
+  <nav class="nav flex-column sidenav">
+  	<%= link_to "Account Settings", edit_account_path, class: current_class?(edit_account_path) %>
+    <%= link_to "Password", password_account_path, class: current_class?(password_account_path) %>
+    <% if current_user.is_chef? %>
+      <%= link_to "Become Certified", certification_account_path, class: current_class?(certification_account_path) %>
+      <%= link_to "Payment Settings", payment_settings_account_path, class: current_class?(payment_settings_account_path)%>
+      <%= link_to "My Listing", chef_path(:id => current_user.chef.id), class: current_class?(listings_account_path)%>
+    <% end %>
+    <%= link_to "Orders", order_index_path, class: current_class?(order_index_path)%>
+    <%= link_to "Logout", destroy_user_session_path, class: current_class?(destroy_user_session_path)%>
+  </nav>
+  
+</div>
+<script>
+    $("nav a").on("click", function(){
+      $(".nav").find(".active").removeClass("active");
+      $(this).addClass("active");
+    });
+</script>

@@ -1,0 +1,53 @@
+<div class="header">
+  You've Received an order!
+</div>
+<div class="content">
+  <p>Hi Chef <%= @user.first_name %>.</p>
+  <p>
+    You've received an order for a total amount of <b><%= number_to_currency @booking.total_fee %></b> from <b><%= @booking.full_name %></b>.
+    <br>
+  </p>
+  <p>
+    <%= @booking.full_name %> is ordering:
+    <br>
+    <table class="booking_info" cellspacing="10">
+      <tbody>
+        <tr>
+          <td><%= @booking.delivery_quantity %></td>
+          <td><%= @package.title %></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <table class="booking_info" cellspacing="10">
+      <tbody>
+        <tr>
+          <td>Delivery address:</td>
+          <td><%= @booking.deliver_address %></td>
+        </tr>
+        <tr>
+          <td>Delivery time:</td>
+          <td><%= l @booking.date_start, format: :short %> <%= @booking.time_start %></td>
+        </tr>
+        <tr>
+          <td>Delivery fee:</td>
+          <td><%= number_to_currency @booking.delivery_fee %></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    Note from customer:
+    <br>
+    <%= (@booking.details.nil? || @booking.details.empty?) ? "N/A" : @booking.details %>
+    <br>
+  </p>
+  <hr/>
+  <p>
+    Click <%= link_to_booking "here" %> to respond to the order request, <%= @booking.full_name %> is waiting to hear from you.
+    <br>
+  </p>
+  <p>
+    Best,<br>
+    The Just Booked Team <br>
+  </p>
+</div>

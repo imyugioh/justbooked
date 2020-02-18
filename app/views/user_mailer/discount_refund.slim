@@ -1,0 +1,15 @@
+.header Coupon reimbursement for #{@booking.package.title}
+.content
+  p
+    | Hi #{@user.full_name},
+
+    p #{@booking.full_name} used a coupon on the booking with reference id #{@booking.order_id}. We have reimbursed you the total amount of #{number_to_currency(@booking.coupon_reimbursement_amount/100.00)}
+
+    p
+      .custom_link = link_to 'See order details', booking_url(@booking.token)
+  p
+    | Best,
+    br/
+    | The Just Booked Team
+    br/
+    | #{ENV['APPNAME'].capitalize} | www.#{ENV['APP_SHORT_NAME']}.com

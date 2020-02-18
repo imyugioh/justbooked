@@ -1,0 +1,358 @@
+
+<div class="detail-card" id="menu-item-<%= menu.id %>">
+   <div class="media align-items-stretch">
+      <div class="media-start">
+         <div class="swiper-container js-item-slides">
+            <div class="swiper-wrapper">
+               <% menu.assets.each do |asset| %>
+                  <div class="swiper-slide">
+                     <img class="rounded" src=<%= menu.main_thumb_url %> alt="Generic placeholder image" data-toggle="modal" data-target="#<%= data_target %>" data-gallery="item4">
+                  </div>
+               <% end %>
+            </div>
+            <div class="swiper-pagination swiper-pagination-white"></div>
+         </div>
+      </div>
+      <div class="media-body hidden-md-down">
+         <div class="hidden-md-down">
+            <h5 class="mt-0 mb-0 card-title"><%= menu.name %></h5>
+            <span class="card-price"><%= menu_price(menu.price) %> / <%= menu.per %></span>
+            <% if menu.cuisine_type_tag_names.any? %>
+               <img src="/images/detail_card/category.png" srcset="/images/detail_card/category.png 1x, /images/detail_card/category@2x.png 2x" alt="Days of work" class="img-fluid card-icons" width="18" height="18">
+               <span class="card-icon-text"><%= menu.cuisine_type_tag_names.first(3).join(', ') %></span>
+            <% end %>
+            <% if menu.dietary_type_tag_names.any? %>
+               <img src="/images/icons/gluten-free.png" srcset="/images/icons/gluten-free.png 1x, /images/icons/gluten-free@2x.png 2x" alt="Dietary Preferences" class="img-fluid card-icons" width="18" height="18">
+               <span class="card-icon-text"><%= menu.dietary_type_tag_names.first(3).join(', ') %></span>
+            <% end %>
+         </div>
+         <div class="hidden-md-down">
+            <div class="card-text-description"><%= simple_format(menu.description) %> <!-- <span class="card-text-link js-expand-text">Read more</span> --></div>
+            <div class="js-extra-description" style="display: none;">
+               <div class="card-text-description"></div>
+            </div>
+         </div>
+      </div>
+      <div class="media-body hidden-lg-up">
+        <div class=" mb-2">
+          <h5 class="mt-0 mb-0 card-title"><%= menu.name %></h5>
+          <span class="card-price"><%= menu_price(menu.price) %> / <%= menu.per %></span>
+          <% if comment_count.to_i > 0 %>
+          <div id="<%= menu.id %>" class="d-flex justify-content-lg-between align-items-center card-stars js-review-popup" data-toggle="popover" data-placement="left" data-trigger="manual">
+            <span class="px-0 jq-ry-container" readonly="readonly" style="width: 91px;">
+              <div class="jq-ry-group-wrapper">
+                <div class="jq-ry-normal-group jq-ry-group"><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#a2a5aa"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#a2a5aa" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#a2a5aa" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#a2a5aa" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#a2a5aa" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg>
+                </div>
+                <div class="jq-ry-rated-group jq-ry-group <%='wid-' + ((avg_rate*20.0).to_i).to_s %>" ><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#f21400"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#f21400" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#f21400" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#f21400" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#f21400" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg></div></div>
+            </span>
+            <div class="reviews"><%= comment_count %>
+              <span class="hidden-md-down">Reviews</span>
+            </div>
+          </div>
+          <% end %>
+          
+          <% if menu.cuisine_type_tag_names.any? %>
+            <div class="card-icons-wrap">
+              <img src="/images/detail_card/category.png" srcset="/images/detail_card/category.png 1x, /images/detail_card/category@2x.png 2x" alt="Days of work" class="img-fluid card-icons" width="18" height="18">
+             <span class="card-icon-text"><%= menu.cuisine_type_tag_names.first(3).join(', ') %></span>
+            </div>
+          <% end %>
+          <% if menu.dietary_type_tag_names.any? %>
+            <div class="card-icons-wrap">
+              <img src="/images/icons/gluten-free.png" srcset="/images/icons/gluten-free.png 1x, /images/icons/gluten-free@2x.png 2x" alt="Dietary Preferences" class="img-fluid card-icons" width="18" height="18">
+              <span class="card-icon-text"><%= menu.dietary_type_tag_names.first(3).join(', ') %></span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="d-flex flex-column justify-content-center">
+         <% if current_user && @chef.user_id == current_user.id %>
+            <%= link_to "Edit Menu Item", edit_menu_path(menu), class: 'btn btn-primary card-btn' %>
+            <%= link_to 'Delete', menu, method: :delete, class: 'btn btn-danger menu-removal', data: {id: menu.id} %>
+         <% else %>
+            <button id="card-btn-<%= menu.id %>" type="button" class="btn btn-primary card-btn" data-toggle="modal" data-target=<%='#addToCartModal' + menu.id.to_s%>>Add To Cart</button>    
+         <% end %>
+         <% if comment_count.to_i > 0 %>
+         <div id="<%= menu.id %>" class="d-flex justify-content-center justify-content-lg-between align-items-center card-stars js-review-popup hidden-md-down" data-toggle="popover" data-placement="left" data-trigger="manual">
+            <span class="px-0 jq-ry-container" readonly="readonly" style="width: 91px;">
+              <div class="jq-ry-group-wrapper">
+                <div class="jq-ry-normal-group jq-ry-group"><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#a2a5aa"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#a2a5aa" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#a2a5aa" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#a2a5aa" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#a2a5aa" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg>
+                </div>
+                <div class="jq-ry-rated-group jq-ry-group <%='wid-' + ((avg_rate*20).to_i).to_s %>" ><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#f21400"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#f21400" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#f21400" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#f21400" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 53.97 52.02" fill="#f21400" style="margin-left: 4px;"><path d="M41.73 52a3 3 0 0 0 3.08-2.92 3 3 0 0 0 0-.44l-1.74-15 10.11-11.02a3 3 0 0 0-.18-4.26 3 3 0 0 0-1.43-.73l-14.66-3-7.32-13.1a3 3 0 0 0-5.2 0l-7.33 13.13-14.66 3a3 3 0 0 0-1.61 5L10.92 33.7l-1.74 15A3 3 0 0 0 11.8 52a3 3 0 0 0 1.6-.25L27 45.46l13.59 6.29a3 3 0 0 0 1.14.25z"></path></svg></div></div>
+            </span>
+            <div class="reviews"><%= comment_count %>
+               <span class="hidden-md-down">Reviews</span>
+            </div>
+         </div>
+         <% end %>
+      </div>
+   </div>
+   <div class="hidden-lg-up">
+      <div class="card-text-description"><%= simple_format(menu.description) %><!-- <span class="card-text-link js-expand-text">Read more</span> -->
+      </div>
+      <div class="js-extra-description" style="display: none;">
+         <div class="card-text-description"></div>
+      </div>
+   </div>
+</div>
+
+<div class="modal welcome-modal addToCartModal" id=<%='addToCartModal' + menu.id.to_s %> tabindex="-1" role="dialog" aria-labelledby="addToCartModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-header justify-content">
+      <h2 class="modal-title"><%= menu.name %></h2>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body justify-content-center text-center">
+      <p class="subtitle"><%= menu.description %></p>
+      <% if menu.package? %>
+        <h4 class="selection">
+          Order Selection
+        </h4>
+        <p class="subtitle">Make your order selections below (min order of <%= menu.min_order_amount %>)</p>
+        <!-- <p style="visibility: visible" id="alert-add-to-cart"> Order amount should be more than minium order amount (<%= menu.min_order_amount %>)</p> -->
+        <div class="items">
+          <% menu_items = menu.menu_items %>
+          <% menu_items.each_with_index do |item, index| %>
+            <div class="item border-bottom">
+              <div class="title"><%= item.name %></div>
+              <div class="quantity js-quantity">
+                <button type="button" data-item-index="<%= item.id %>" data-menu_id="<%= item.menu_id %>" data-menu_price="<%= number_with_precision(item.price, precision: 2) %>" class="quantity__btn quantity__btn--dec js-quantity-minus" id='<%= "js-quantity-minus#{item.id}" %>'>–</button>
+                <input type="text" data-item-index="<%= item.id %>" data-menu_id="<%= item.menu_id %>" data-menu_price="<%= number_with_precision(item.price, precision: 2) %>" class="quantity__input" value="<%= index == 0 ? menu.min_order_amount: 0 %>" id='<%= "js-quantity-input#{item.id}" %>'>
+                <button type="button" data-item-index="<%= item.id %>" data-menu_id="<%= item.menu_id %>" data-menu_price="<%= number_with_precision(item.price, precision: 2) %>" class="quantity__btn quantity__btn--inc js-quantity-plus" id='<%= "js-quantity-plus#{item.id}" %>'>+</button>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <!-- single item -->
+        <h4 class="selection">
+          Order Selection
+        </h4>
+        <p class="subtitle">Make your order selections below (min order of <%= menu.min_order_amount %>)</p>
+        <div class="item border-bottom">
+          <div class="title"></div>
+          <div class="quantity js-quantity">
+            <button type="button" data-menu_id="<%= menu.id %>" data-menu_price="<%= number_with_precision(menu.price, precision: 2) %>" class="quantity__btn quantity__btn--dec js-quantity-minus" id='<%= "js-quantity-minus-menu#{menu.id}" %>'>–</button>
+            <input type="number" data-menu_id="<%= menu.id %>" data-menu_price="<%= number_with_precision(menu.price, precision: 2) %>" class="quantity__input" value="<%= menu.min_order_amount %>" id='<%= "js-quantity-input-menu#{menu.id}" %>'>
+            <button type="button" data-menu_id="<%= menu.id %>" data-menu_price="<%= number_with_precision(menu.price, precision: 2) %>" class="quantity__btn quantity__btn--inc js-quantity-plus" id='<%= "js-quantity-plus-menu#{menu.id}" %>'>+</button>
+          </div>
+        </div>
+      <% end %>
+      
+      <% addon_items = menu.addons %>
+      <% if addon_items.length > 0 %>
+        <h4 class="selection">
+          Add Ons
+        </h4>
+        <p class="subtitle">Choose as many as you'd like</p>
+        
+        <div class="items">
+          <% addon_items.each_with_index do |item, index| %>
+            <div class="item border-bottom">
+              <label class="custom-control custom-checkbox">
+                <div class="title"><%= item.name %>&nbsp;- add $<%= number_with_precision(item.price, precision: 2) %></div>
+                <input type="checkbox" name="tags[add_ons][]" data-item-index="<%= item.id %>" id='<%= "addon_#{item.id}" %>' class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+              </label>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      
+      <div class="items">
+        <h4 class="selection"> Special Instructions </h4>
+        <textarea class="form-control" rows="4" id='<%= "special_instruction#{menu.id}" %>'></textarea>
+      </div>
+      <div class="add-btn">
+        <button type="button" class="btn btn-primary add-to-cart-button" id='<%="js-add-to-cart-button#{menu.id}" %>' data-menu_id="<%= menu.id %>" data-menu_type="<%= menu.menu_type %>" data-menu_name="<%= menu.name %>" data-menu_img="<%= menu.main_thumb_url %>" data-unit_price="<%= number_with_precision(menu.price, precision: 2) %>" data-amount="1" data-chef_id="<%= @chef.id %>" data-max_delivery_distance="<%= @chef.max_delivery_distance %>" data-min_order_amount="<%= @chef.pre_order_min_order_amount %>" data-min_order_menus_amount="<%= menu.min_order_amount %>" data-toggle="modal">Add To Cart</button> 
+      </div>
+      
+    </div>
+  </div>
+  </div>
+</div>
+
+<script>
+  // check if current menu is in the cart now
+  var amount = window.menu_cart_items(<%= menu.id %>);
+  if(amount > 0) {
+    $('#card-btn-' + <%= menu.id %>).html("Add To Cart (" + amount + ")");
+  }
+
+  <% addon_items = menu.addons %>
+  <% total = (menu.price * menu.min_order_amount).to_f.round(2) %>
+
+  <% 
+  if menu.package?
+    if menu.menu_items.length > 0
+      total = (menu.menu_items[0].price * menu.min_order_amount).to_f.round(2)
+    else
+      total = 0
+    end
+  end 
+  %>
+
+  var addToCart = $('.js-add-to-cart-button');
+  var total_amount = <%= total %>;
+  var total_menus_count = <%= menu.min_order_amount %>;
+  var addon_counts = {};
+  var addon_info = {}; // Need to save name & price
+
+  document.getElementById('<%="js-add-to-cart-button#{menu.id}"%>').setAttribute("data-total", parseFloat(total_amount).toFixed(2))
+  document.getElementById('<%="js-add-to-cart-button#{menu.id}"%>').setAttribute("data-unit_price", parseFloat(total_amount).toFixed(2))
+  document.getElementById('<%="js-add-to-cart-button#{menu.id}"%>').setAttribute("data-total_menus_count", total_menus_count)
+
+  <% addon_items.each do |item| %>
+    addon_counts[<%= item.id %>] = 0
+    addon_info[<%= item.id %>] = { name: "<%= item.name %>", price: "<%= item.price %>" }
+
+    document.getElementById('<%= "addon_#{item.id}" %>').addEventListener("click", function(e){
+      var index = this.getAttribute("data-item-index"); // will be used to addon_counts[index]
+      var cart_button = document.getElementById('<%="js-add-to-cart-button#{menu.id}"%>')
+      var tmp_total_amount = cart_button.getAttribute("data-total")
+      var tmp_total_menus_count = cart_button.getAttribute("data-total_menus_count")
+      var tmp_addon_counts = JSON.parse(cart_button.getAttribute("data-addon_counts"))
+      if (e.target.checked) { 
+        tmp_total_amount = parseFloat(tmp_total_amount) + <%= item.price.to_f %> 
+        tmp_addon_counts[index] = 1;
+      }
+      else { 
+        tmp_total_amount -= <%= item.price.to_f %> 
+        tmp_addon_counts[index] = 0;
+      }
+      cart_button.setAttribute("data-total", tmp_total_amount.toFixed(2))
+      cart_button.setAttribute("data-unit_price", tmp_total_amount.toFixed(2))
+      cart_button.setAttribute("data-addon_counts", JSON.stringify(tmp_addon_counts))
+    })
+  <% end %>
+  console.log('---> new addon counts')
+  console.log(addon_counts)
+  console.log('---> addon info')
+  console.log(addon_info)
+  document.getElementById('<%="js-add-to-cart-button#{menu.id}"%>').setAttribute("data-addon_counts", JSON.stringify(addon_counts))
+  document.getElementById('<%="js-add-to-cart-button#{menu.id}"%>').setAttribute("data-addon_info", JSON.stringify(addon_info))
+
+  <% if menu.package? %>
+    <% menu_items = menu.menu_items %>
+    var menu_items_counts = {}; // <%= menu_items.each_with_index.map { |e, index| index == 0 ? menu.min_order_amount : 0 } %>;
+    // var storedArray = JSON.parse($("#storageElement").data("storeIt"));
+    // data-menu_items_amounts initializing
+    var menu_items_info = {}; // need to save menu item name & price
+
+    <% menu_items.each_with_index do |item, index| %>
+      <% if index == 0 %>
+        menu_items_counts[<%= item.id %>] = parseInt(<%= menu.min_order_amount %>, 10);
+      <% else %>
+        menu_items_counts[<%= item.id %>] = 0;
+      <% end %>
+
+      menu_items_info[<%= item.id %>] = { name: "<%= item.name %>", price: "<%= item.price %>" }
+      document.getElementById('<%= "js-quantity-minus#{item.id}" %>').addEventListener("click", function(e){
+        var index = this.getAttribute("data-item-index"); // will be used to menu_items_amounts[index]
+        var item_price = this.getAttribute("data-menu_price"); // menu item's price
+        var cart_button = document.getElementById('<%="js-add-to-cart-button#{menu.id}"%>')
+
+        var tmp_menu_items_counts = JSON.parse(cart_button.getAttribute("data-menu_items_counts"))
+        if(tmp_menu_items_counts[index] > 0) {// Need to change
+          tmp_menu_items_counts[index] --;
+          var tmp_total_amount = cart_button.getAttribute("data-total")
+          var tmp_total_menus_count = parseInt(cart_button.getAttribute("data-total_menus_count"), 10) - 1;
+          tmp_total_amount -= parseFloat(item_price)
+          cart_button.setAttribute("data-total", tmp_total_amount.toFixed(2))
+          cart_button.setAttribute("data-unit_price", tmp_total_amount.toFixed(2))
+          cart_button.setAttribute("data-total_menus_count", tmp_total_menus_count)
+          cart_button.setAttribute("data-menu_items_counts", JSON.stringify(tmp_menu_items_counts))
+        }
+      })
+
+      document.getElementById('<%= "js-quantity-plus#{item.id}" %>').addEventListener("click", function(e){
+        var index = this.getAttribute("data-item-index"); // will be used to menu_items_amounts[index]
+        var item_price = this.getAttribute("data-menu_price"); // menu item's price
+        var cart_button = document.getElementById('<%="js-add-to-cart-button#{menu.id}"%>')
+
+        var tmp_menu_items_counts = JSON.parse(cart_button.getAttribute("data-menu_items_counts"))
+        tmp_menu_items_counts[index] ++;
+
+        var tmp_total_amount = cart_button.getAttribute("data-total")
+        var tmp_total_menus_count = parseInt(cart_button.getAttribute("data-total_menus_count"), 10);
+        tmp_total_amount = parseFloat(tmp_total_amount) + parseFloat(item_price)
+        tmp_total_menus_count += 1
+        cart_button.setAttribute("data-total", tmp_total_amount.toFixed(2))
+        cart_button.setAttribute("data-unit_price", tmp_total_amount.toFixed(2))
+        cart_button.setAttribute("data-total_menus_count", tmp_total_menus_count)
+        cart_button.setAttribute("data-menu_items_counts", JSON.stringify(tmp_menu_items_counts))
+      })
+
+      document.getElementById('<%= "js-quantity-input#{item.id}" %>').addEventListener("keyup", function(e){
+        this.value = parseInt(this.value.replace(/[^0-9]/g, ''), 10) || 0
+
+        var index = this.getAttribute("data-item-index"); // will be used to menu_items_amounts[index]
+        var item_price = this.getAttribute("data-menu_price"); // menu item's price
+        var cart_button = document.getElementById('<%="js-add-to-cart-button#{menu.id}"%>')
+
+        var tmp_menu_items_counts = JSON.parse(cart_button.getAttribute("data-menu_items_counts"))
+        // Need to get difference : this.value - tmp_menu_items_counts[index]
+        var diff = parseInt(this.value, 10) - parseInt(tmp_menu_items_counts[index], 10)
+        tmp_menu_items_counts[index] += diff
+
+        var tmp_total_amount = cart_button.getAttribute("data-total")
+        var tmp_total_menus_count = parseInt(cart_button.getAttribute("data-total_menus_count"), 10);
+        tmp_total_amount = parseFloat(tmp_total_amount) + parseFloat(item_price) * diff
+        tmp_total_menus_count += diff
+        cart_button.setAttribute("data-total", tmp_total_amount.toFixed(2))
+        cart_button.setAttribute("data-unit_price", tmp_total_amount.toFixed(2))
+        cart_button.setAttribute("data-total_menus_count", tmp_total_menus_count)
+        cart_button.setAttribute("data-menu_items_counts", JSON.stringify(tmp_menu_items_counts))
+      })
+    <% end %>
+
+    document.getElementById('<%="js-add-to-cart-button#{menu.id}"%>').setAttribute("data-menu_items_counts", JSON.stringify(menu_items_counts));
+    document.getElementById('<%="js-add-to-cart-button#{menu.id}"%>').setAttribute("data-menu_items_info", JSON.stringify(menu_items_info));
+  <% else %>
+    // single
+    document.getElementById('<%= "js-quantity-minus-menu#{menu.id}" %>').addEventListener("click", function(e){
+      var cart_button = document.getElementById('<%="js-add-to-cart-button#{menu.id}"%>')
+      var item_price = this.getAttribute("data-menu_price"); // menu item's price
+      var tmp_total_amount = cart_button.getAttribute("data-total")
+      var tmp_total_menus_count = parseInt(cart_button.getAttribute("data-total_menus_count"), 10) - 1;
+      if(tmp_total_menus_count >= 0) { // Need to update
+        tmp_total_amount -= parseFloat(item_price)
+        cart_button.setAttribute("data-total", tmp_total_amount.toFixed(2))
+        cart_button.setAttribute("data-unit_price", tmp_total_amount.toFixed(2))
+        cart_button.setAttribute("data-total_menus_count", tmp_total_menus_count)
+      }
+    })
+
+    document.getElementById('<%= "js-quantity-plus-menu#{menu.id}" %>').addEventListener("click", function(e){
+      var cart_button = document.getElementById('<%="js-add-to-cart-button#{menu.id}"%>')
+      var item_price = this.getAttribute("data-menu_price"); // menu item's price
+      var tmp_total_amount = cart_button.getAttribute("data-total")
+      var tmp_total_menus_count = parseInt(cart_button.getAttribute("data-total_menus_count"), 10) + 1;
+      tmp_total_amount = parseFloat(tmp_total_amount) + parseFloat(item_price)
+      cart_button.setAttribute("data-total", tmp_total_amount.toFixed(2))
+      cart_button.setAttribute("data-unit_price", tmp_total_amount.toFixed(2))
+      cart_button.setAttribute("data-total_menus_count", tmp_total_menus_count)
+    })
+
+    document.getElementById('<%= "js-quantity-input-menu#{menu.id}" %>').addEventListener("keyup", function(e){
+      this.value = parseInt(this.value.replace(/[^0-9]/g, ''), 10) || 0
+
+      var cart_button = document.getElementById('<%="js-add-to-cart-button#{menu.id}"%>')
+      var item_price = this.getAttribute("data-menu_price"); // menu item's price
+      var tmp_total_amount = cart_button.getAttribute("data-total")
+      var tmp_total_menus_count = parseInt(cart_button.getAttribute("data-total_menus_count"), 10)
+
+      // Need to get difference : this.value - tmp_menu_items_counts[index]
+      var diff = parseInt(this.value, 10) - parseInt(tmp_total_menus_count, 10)
+      tmp_total_menus_count += diff
+
+      tmp_total_amount = parseFloat(tmp_total_amount) + parseFloat(item_price) * diff
+      cart_button.setAttribute("data-total", tmp_total_amount.toFixed(2))
+      cart_button.setAttribute("data-unit_price", tmp_total_amount.toFixed(2))
+      cart_button.setAttribute("data-total_menus_count", tmp_total_menus_count)
+    })
+  <% end %>
+</script>

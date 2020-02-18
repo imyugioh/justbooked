@@ -1,0 +1,28 @@
+<div class='container'>
+  <div class="justify-content-center pt-5 mb-5">
+    <h2 class="setting-page-title">My Cart</h2>
+    <% unless user_signed_in? %>
+      <h4>Want to checkout faster? <a href="#" class="text-semibold" data-toggle="modal" data-target="#signinModal">Sign in</a> or <a href="#" class="text-semibold" data-toggle="modal" data-target="#signupModal">Sign up</a>.</h4>
+    <% end %>
+  </div>
+  <div id="checkout-app"></div>
+</div>
+
+<%= render 'payment' %>
+<%= javascript_tag do %>
+  window.cart_user_info = <%= @user_info.to_json.html_safe %>;
+  window.cart_chef_info = <%= @cart_chef.to_json.html_safe %>;
+  window.cart_chef_info.chef_page = '<%= @cart_chef.my_listings_path %>';
+  window.cart_chef_info.free_delivery_min_order_amount = parseFloat(window.cart_chef_info.free_delivery_min_order_amount);
+  window.cart_chef_info.min_fee_for_onsite_cooking = parseFloat(window.cart_chef_info.min_fee_for_onsite_cooking);
+  window.cart_chef_info.pre_order_min_order_amount = parseFloat(window.cart_chef_info.pre_order_min_order_amount);
+  window.cart_chef_info.delivery_fee = parseFloat(window.cart_chef_info.delivery_fee);
+<% end %>
+
+
+
+<script src="/assets/javascripts/checkout_app_build.js?t=<%= Time.zone.now.to_i %>"></script>
+
+
+<%= render 'shared/signin_modal' %>
+<%= render 'shared/signup_modal' %>

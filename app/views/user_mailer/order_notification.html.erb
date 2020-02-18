@@ -1,0 +1,22 @@
+<% content_for :header do %>
+You’ve received an order!
+<% end %>
+
+<% content_for :message do %>
+
+<p>Hi <%= @chef.first_name %>,</p>
+
+<p>
+  You’ve received an order. Please visit the below link to view order details.
+</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+
+<p><%= link_to 'Order detail', "TODO" %></p>
+
+<p>Best,<br/>
+The Justbooked Team
+<!-- <a href="http://www.justbooked.com">www.justbooked.com</a><br/> -->
+</p>
+<% end %>

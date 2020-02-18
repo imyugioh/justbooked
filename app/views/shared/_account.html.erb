@@ -1,0 +1,14 @@
+<li class="nav-item dropdown ml-md-3">
+  <a class="btn btn-outline-primary dropdown-toggle" href="#" data-toggle="dropdown">Hi, <%= current_user.first_name %>!</a>
+  <div class="dropdown-menu dropdown-menu-right mt-md-2">
+    <%= link_to "Account Details", edit_account_path, class: "dropdown-item" %>
+    <% if current_user.is_chef? %>
+      <%= link_to "My Listings", current_user.chef.my_listings_path, class: "dropdown-item" %>
+      <%= link_to "Orders", order_index_path, class: "dropdown-item" %>
+    <% end %>
+    <!-- <a class="dropdown-item" href="orders.html">Orders</a> -->
+    <div class="dropdown-item">
+      <%= link_to "LOGOUT", destroy_user_session_path, class: "btn btn-outline-secondary d-block" %>
+    </div>
+  </div>
+</li>

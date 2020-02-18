@@ -1,0 +1,117 @@
+
+<div class="container-fluid container-orders page-content">
+    <div class="d-flex">
+      <!-- <%= render 'nav' %> -->
+      <div class="w-80">
+        <h4 class="setting-page-title mb-4">Account Settings</h4>
+        <form class="chefs-form pt-2" action="">
+          <div class="row">
+            <div class="col-12 col-sm-6">
+              <div class="form-group">
+                <label for="">Legal name</label><input type="text" class="form-control" placeholder="First name"></div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="form-group">
+                <label for="" class="invisible">Last name</label><input type="text" class="form-control" placeholder="Last name"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-sm-8">
+              <div class="form-group">
+                <label for="">Home address</label><input type="text" class="form-control" placeholder="27, Smithwood Dr."></div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group">
+                <label for="" class="invisible">App/Unit</label><input type="text" class="form-control" placeholder="App/Unit"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-sm-4">
+              <div class="form-group">
+                <label for="">Postal code</label><input type="text" class="form-control" placeholder="M9B4R7"></div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group">
+                <label for="">City</label><input type="text" class="form-control" placeholder="ETOBICOKE"></div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group">
+                <label for="">Province</label><input type="text" class="form-control" placeholder="Ontario"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-sm-4">
+              <div class="form-group">
+                <label for="">Date of Birth
+                  <span class="small text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Help info">(?)</span>
+                </label><input type="text" class="form-control" placeholder="DD/MM/YYYY"></div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group">
+                <label for="" class="invisible">Date of Birth</label><input type="text" class="form-control" placeholder="DD/MM/YYYY"></div>
+            </div>
+            <div class="col-12 col-sm-4">
+              <div class="form-group">
+                <label for="" class="invisible">Date of Birth</label><input type="text" class="form-control" placeholder="YYYY"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-sm-6">
+              <div class="form-group">
+                <label for="">Phone number
+                  <span class="small text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Help info">(?)</span>
+                </label><input type="text" class="form-control" placeholder="(000) 000-0000"></div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="form-group">
+                <label for="">Email address</label><input type="email" class="form-control" placeholder="example@email.com"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-sm-6">
+              <div class="form-group">
+                <label for="">Profile picture (must be 135px x 135px or above)</label>
+                <label class="custom-file w-100">
+                  <input type="file" id="file" class="custom-file-input">
+                  <span class="custom-file-control"></span>
+                </label>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="form-group">
+                <label for="">Header image (must be 1600px x 320px or above)</label>
+                <label class="custom-file w-100">
+                  <input type="file" id="file" class="custom-file-input">
+                  <span class="custom-file-control"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="description">About me</label>
+            <textarea class="form-control" name="description" id="" cols="30" rows="10" placeholder="Write description about yourself"></textarea>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-sm-6">
+              <div class="form-group">
+                <label for="">Max. distance you’re willing to deliver to (in km)</label><input type="text" class="form-control" placeholder="5 km"></div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="form-group">
+                <label for="">Minimum dollar amount you can service</label><input type="text" class="form-control" placeholder="$45"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <span>When will you work?</span>
+            <button type="button" class="btn-link" data-toggle="modal" data-target="#calendarModal">Open work scheduler</button>
+          </div>
+
+          <div class="d-flex justify-content-end mt-3">
+            <button type="submit" class="btn btn-primary settings-btn">SAVE</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

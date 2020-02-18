@@ -1,0 +1,21 @@
+<% content_for :header do %>
+Let’s confirm your email.
+<% end %>
+
+<% content_for :message do %>
+
+<p>Hi <%= @email %>,</p>
+
+<p>You will be receiving notifications on your orders through email, so it’s important that we confirm that this is your email address. 
+</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p>Best,<br/>
+The Justbooked Team
+<!-- <a href="http://www.justbooked.com">www.justbooked.com</a><br/> -->
+</p>
+<% end %>

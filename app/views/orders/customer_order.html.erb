@@ -1,0 +1,55 @@
+<div class="container-fluid container-orders page-content">
+  <div class="d-flex">
+    <%= render 'accounts/sidemenu' %>
+
+    <div class="w-80">
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="all" role="tabpanel">
+
+          <h4 class="setting-page-title mb-4">My Orders</h4>
+
+          <% if @all != nil %>
+          <% @all.each do |item| %>
+            <%
+              @sum_quantity = 0
+              menu_id = item.menus.first.model_id
+              @menu = Menu.unscoped.find(menu_id)
+
+              @chef = @menu.chef
+
+              menu_desc = "#{@menu.name} from #{@chef.first_name}'s"
+
+              item.purchase_items.each do |t| 
+                @sum_quantity += t.amount
+              end
+            %>
+            <div class="order-card">
+              <div class="order-card-body">
+                <div class="row card-category-wrap">
+                  <div class="col-2 col-sm-2 col-xl-2 card-category">Ordered At</div>
+                  <div class="col-2 col-sm-3 col-xl-2 card-category">Payment Status</div>
+                  <div class="col-1 col-sm-1 col-xl-1 card-category">Menu</div>
+                  <div class="col-2 col-sm-2 col-xl-2 card-category">Quantity</div>
+                  <div class="col-4 col-sm-4 col-xl-5 card-category">Delivery Address and Time</div>
+                </div>
+                <div class="order-card-border"></div>
+                <div class="row card-category-info-wrap">
+                  
+                  <div class="col-2 col-sm-2 col-xl-2 card-category-info request-status-yellow"><%= item.created_at.strftime("%b %d %I:%M %p") %></div>
+
+                  <div class="col-2 col-sm-3 col-xl-2 card-category-info">IN PROGRESS
+                    <span>Charge attempts</span>
+                  </div>
+                  <div class="col-1 col-sm-1 col-xl-1 card-category-info"><%= link_to menu_desc, chef_path(@chef) %></div>
+                  <div class="col-2 col-sm-2 col-xl-2 card-category-info"><%= @sum_quantity %></div>
+                  <div class="col-4 col-sm-4 col-xl-5 card-category-info"><%= item.delivery_address %>&nbsp;<%= item.order_time %></div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+<div class="detail-top-bg contact-us">
+  <div class="page-title">CONTACT US</div>
+</div>
+<section class="secondary-info">
+  <div class="container">
+    <p>It's food lovers like yourself who inspire us to do what we do. Your comments, ideas and questions push us to go that extra mile, every time. So drop us a line!</p>
+  </div>
+</section>
+<section class="contact-form">
+
+  <%= form_for @message, url: messages_path , method: :post do |f| %>
+
+    <div class="container-fluid container-detail">
+      <% if @message.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@message.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+          <ul>
+            <% contact.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+  
+      <% if flash[:success] %>
+        <div class="alert alert-success">
+              <%= flash[:success] %>
+        </div>
+      <% end %>
+
+      <div class="row mt-40">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="custom-control" for="first_name">Name: <span class="red"> *</span></label>
+            <%= f.text_field :first_name, id: :message_first_name, class: "form-control" %>
+            <span class="sub">First</span>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="custom-control" for="last_name">&nbsp;</label>
+            <%= f.text_field :last_name, id: :message_last_name, class: "form-control" %>
+            <span class="sub">Last</span>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="custom-control" for="email">Email: <span class="red"> *</span></label>
+            <%= f.email_field :email, id: :message_email, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="form-group">
+            <label class="custom-control" for="message">Your message: <span class="red"> *</span></label>
+            <%= f.text_area :message, id: :message_message, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  <% end %>
+</section>

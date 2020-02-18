@@ -1,0 +1,34 @@
+<!-- TrustBox script -->
+<script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+<!-- End Trustbox script -->
+
+<div class="hero hero--homepage search-box-homepage">
+  <div class="hero--homepage__tint"></div>
+  <div class="container" id="home-search-app"></div>
+  <%= react_component "HomeApp" %>
+</div>
+
+<section class="section-advantages">
+  <%= render 'advantages' %>
+</section>
+
+<div class="bg-faded sections-list">
+  <%= render 'shared/recently_booked' %>
+  <!-- TrustBox widget - Micro Review Count -->
+  <div class="trustpilot-widget" data-locale="en-CA" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="5bb77901f3e742000175aa34" data-style-height="24px" data-style-width="100%" data-theme="light">
+    <a href="https://ca.trustpilot.com/review/justbooked.com" target="_blank">Trustpilot</a>
+  </div>
+  <!-- End TrustBox widget -->
+  <%#= render 'shared/popular' %>
+  <%#= render 'shared/discover' %>
+</div>
+
+<script type="text/javascript">
+	$( document ).ready(function() {
+		if (flash_notice.length > 0 && flash_notice === "<%= t('devise.registrations.signed_up_but_unconfirmed') %>") {
+			$('#confirmationEmail').modal('show');
+		} else {
+		    console.log("Flash message: ", flash_notice);
+    }
+	});
+</script>

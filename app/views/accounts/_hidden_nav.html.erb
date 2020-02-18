@@ -1,0 +1,20 @@
+<div class="pos-f-t hidden-md-up">
+  <nav class="navbar navbar-inverse bg-primary sidenav-toggler">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-primary sidenav-wrap">
+      <nav class="nav flex-column sidenav">
+        <%= link_to "Account Settings", edit_account_path, class: "nav-link sidenav-link"%>
+        <%= link_to "Payment Settings", payment_settings_account_path, class: "nav-link sidenav-link"%>
+        <%= link_to "Password", password_account_path, class: "nav-link sidenav-link"%>
+        <%= link_to "Newsletter", newsletter_account_path, class: "nav-link sidenav-link"%>
+        <%= link_to "My Listing", listings_account_path, class: "nav-link sidenav-link"%>
+        <%= link_to "Orders", order_index_path, class: "nav-link sidenav-link"%>
+        <%= link_to "Logout", destroy_user_session_path, class: "nav-link sidenav-link"%>
+      </nav>
+    </div>
+  </div>
+</div>

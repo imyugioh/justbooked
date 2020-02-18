@@ -1,0 +1,69 @@
+<nav class="navbar navbar-toggleable-sm navbar-default" style="justify-content: space-between;">
+  <span>
+    <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="<%= root_path %>">
+      <img src="/images/brand-white.svg" alt="Just Booked" class="navbar-brand-image is-white" width="175" height="30">
+      <img src="/images/brand.svg" alt="Just Booked" class="navbar-brand-image is-colored" width="175" height="30">
+    </a>
+  </span>
+  <span>
+    <span id="carts_app" class="nav-item dropdown ml-3 cart-dropdown show inline-desktop">
+      <!-- React carts app goes here -->
+    </span>
+    <span class="inline-desktop">
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto align-items-md-center">
+          <% if user_signed_in? %>
+            <li class="nav-item nav-item-user block-mobile">SIGNED IN AS <%= current_user.first_name %>!</li>
+          <% end %>
+          <li class="nav-item">
+            <% if user_signed_in? %>
+              <% if current_user.chef_signed_up? %>
+                <%= link_to "Create Listing", current_user.chef.my_listings_path, class: "nav-link" %>
+              <% else %>
+                <%= link_to "Create Listing", '/chef_signup/chef_info', class: "nav-link" %> 
+              <% end %>
+            <% else %>
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#signupModal">Create Listing</a>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/about_us">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://www.blog.justbooked.com">Blog</a>
+          </li>
+          <% if user_signed_in? %>
+            <%= render '/shared/account' %>
+
+            <li class="nav-item block-mobile">
+              <%= link_to "Account Details", edit_account_path, class: "nav-link" %>
+            </li>
+            <% if current_user.is_chef? %>
+              <li class="nav-item block-mobile">
+                <%= link_to "My Listings", current_user.chef.my_listings_path, class: "nav-link" %>
+              </li>
+            <% end %>
+            <li class="nav-item block-mobile">
+              <%= link_to "Orders", order_index_path, class: "nav-link"%>
+            </li>
+            <li class="nav-item block-mobile">
+              <div class="nav-link">
+                <%= link_to "LOGOUT", destroy_user_session_path, class: "btn btn-outline-secondary d-block" %>
+              </div>
+            </li>
+
+          <% else %>
+            <li class="nav-item nav-item--buttons">
+                <a class="btn btn-outline-white is-white" href="#" data-toggle="modal" data-target="#signinModal">SIGN IN</a>
+                <a class="btn btn-outline-primary is-colored" href="#" data-toggle="modal" data-target="#signinModal">SIGN IN</a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </span>
+  </span>
+</nav>

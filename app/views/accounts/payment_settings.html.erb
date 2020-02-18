@@ -1,0 +1,84 @@
+
+<div class="container">
+  <div class="row justify-content-center mt-5 mb-5">
+    <div class="col-12 col-md-8 col-md-offset-4 text-center">
+      <h2>Your payment information</h2>
+    </div>
+  </div>
+  <%= form_for @payment_account, html: {class: "chefs-form chefs-form--sm mb-5 pb-5"}, url: payment_update_account_path, method: :put do |f| %>
+
+    <% if @payment_account.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@payment_account.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+        <ul>
+          <% @payment_account.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <% if flash[:success] %>
+      <div class="alert alert-success">
+            <%= flash[:success] %>
+      </div>
+    <% end %>
+
+    <% if flash[:error] %>
+      <div class="alert alert-danger">
+            <%= flash[:error] %>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.check_box :stripe_terms_of_services, style: "width: 20px; height: 20px" %>&nbsp;&nbsp;
+      <label for=""><strong style="font-size: 1.2em">Stripe Terms of Services (*)</strong></label>
+      &nbsp;&nbsp;
+      <a href="https://www.shopify.com/legal/terms-payments-gb" style="font: 1.2em">Stripe Agreement</a>
+    </div>
+    <div id="main_payment_account_form">
+      <div class="form-group">
+        <label for="">Holder First Name (*)</label>
+        <%= f.text_field :first_name, class: "form-control", placeholder: "First Name" %>
+      </div>
+      <div class="form-group">
+        <label for="">Holder Last Name (*)</label>
+        <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+      </div>
+      <div class="form-group">
+        <label for="">Account Number (*)</label>
+        <%= f.text_field :account_number, class: "form-control", placeholder: "1234567"%>
+      </div>
+      <div class="form-group">
+        <label for="">Currency (*)</label>
+        <%= f.select :currency, options_for_select(PaymentAccount.currency_options, @payment_account.currency), {}, {class: "form-control", selected: 'CAD'} %>
+      </div>
+      <div class="form-group">
+        <label for="">Routing Number (Branch number - Transit number) e.g) 11000-000 (*)</label>
+        <%= f.text_field :routing_number, class: "form-control" %>
+        <div class="help-block small mt-2">Need help finding this number?
+          <a class="small text-primary" href="<%= image_url('popup.png') %>" target="_blank">Click here</a>
+          to see example</div>
+      </div>
+      <hr>
+      <div class="form-group">
+        <label for="">Business Type</label>
+        <%= f.select :business_type, options_for_select(PaymentAccount.business_type_options, @payment_account.business_type), {}, {class: "form-control", selected: 'Individual'} %>
+      </div>
+      <div class="form-group">
+        <label for="">Business Name (optional)</label>
+        <%= f.text_field :business_name, class: "form-control"%>
+      </div>
+      <div class="form-group">
+        <label for="">Business tax id (optional)</label>
+        <%= f.text_field :business_tax_id, class: "form-control" %>
+      </div>
+      <div class="row form-group-action">
+        <div class="col-12 col-md-6 push-md-6">
+          <button type="submit" class="btn btn-primary d-block w-100 text-uppercase">Save</button>
+        </div>
+      </div>      
+    </div>
+  <% end %>
+</div>
