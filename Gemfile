@@ -20,7 +20,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'rake', '< 11.0'
+gem 'rake', '< 14.0'
 
 # Tiny, fast & funny HTTP server
 # gem 'thin'
